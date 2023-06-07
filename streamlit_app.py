@@ -11,9 +11,6 @@ def main() :
     
     #File upload function    
     uploaded_file = st.file_uploader("Upload a pdf, docx or txt file")
-    bytes_data = uploaded_file.read()
-    st.write("filename:", uploaded_file.name)
-    st.write(bytes_data)
       
 if __name__ == "__main__":
     st.set_page_config(page_title="Testing Policy Tool", layout="wide")
