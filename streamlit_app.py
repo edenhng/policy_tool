@@ -19,8 +19,14 @@ def main() :
         page_count = doc.page_count
         title = metadata['title']
         author = metadata['author']
-        st.write("Title:", title)
-        st.write("Author:", author) 
+        if title == "":
+            st.write("Title: N/A")
+        else:
+            st.write("Title:", title)
+        if title == "":
+            st.write("Author: N/A")
+        else:
+            st.write("Author:", author)           
         st.write("Total pages:", page_count)
                       
 if __name__ == "__main__":
