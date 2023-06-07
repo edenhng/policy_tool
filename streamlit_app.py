@@ -21,7 +21,7 @@ def preprocess_text(text, nlp):
     return processed_text
         
 def create_word_cloud(text):
-    wordcloud = WordCloud(width=800, height = 400, max_words=100, background_color="white').generate(text)
+    wordcloud = WordCloud(width=800, height = 400, max_words=100, background_color='white').generate(text)
     plt.figure(figsize=(10, 5))
     plt.imshow(wordcloud, interpolation ='bilinear')                    
     plt.axis('off')
