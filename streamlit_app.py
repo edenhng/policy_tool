@@ -24,7 +24,7 @@ def extracted_text_from_pdf(pdf_file):
     text = ""
     for page in pdf_file:
         text += page.get_text()
-        return text
+    return text
 
 def create_word_cloud(text):
     wordcloud = WordCloud(width=800, height = 400, max_words=100, background_color='white').generate(text)
