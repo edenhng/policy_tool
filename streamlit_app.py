@@ -5,7 +5,7 @@ def main() :
     #Create a side bar and format it
     with st.sidebar:
         st.markdown(
-        ""
+        '''
         <style>
             [data-testid="stSidebarNav"] {
                 background-image: url(http://placekitten.com/200/200);
@@ -22,11 +22,10 @@ def main() :
                 top: 100px;
             }
         </style>
-        "",
+        ''',
         unsafe_allow_html=True,
     )
-        st.title("Policy at a Glanceeee")
-        
+        st.title("Policy at a Glance")
         
     #File upload function    
     uploaded_files = st.file_uploader("Choose a CSV file", accept_multiple_files=True)
