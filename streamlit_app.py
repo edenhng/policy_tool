@@ -4,7 +4,7 @@ import fitz #import PyMuPDF
 import spacy
 from spacy.lang.en.stop_words import STOP_WORDS
 from wordcloud import WordCloud
-import matploblib.pyplot as plt
+import matplotlib.pyplot as plt
 import seaborn as sns
 
 def main() :
