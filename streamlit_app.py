@@ -15,11 +15,13 @@ def main() :
     if uploaded_pdf is not None:
         doc = fitz.open(stream=uploaded_pdf.read(), filetype="pdf")
         #1. Extract the Title and Author
-        metadata = doc.metadata                                               
+        metadata = doc.metadata 
+        page_count = doc.page_count
         title = metadata['title']
         author = metadata['author']
         st.write("Title:", title)
-        st.write("Author:", author)                                                        
+        st.write("Author:", author) 
+        st.write("Total pages:", page_count)
                       
 if __name__ == "__main__":
     st.set_page_config(page_title="Testing Policy Tool", layout="wide")
