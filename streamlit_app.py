@@ -60,7 +60,7 @@ def main() :
             text += page.get_text()
             return text
         nlp=load_spacy_model()
-        processed_text = preprocess_text(extracted_text, nlp)
+        processed_text = preprocess_text(text, nlp)
         create_word_cloud(processed_text)                  
     
 if __name__ == "__main__":
