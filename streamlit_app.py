@@ -21,7 +21,7 @@ def preprocess_text(text, nlp):
     return processed_text
 
 def extracted_text_from_pdf(pdf_path):
-    doc. fitz.open(pdf_path)
+    doc = fitz.open(pdf_path)
     text = ""
     for page in doc:
         text += page.get_text()
