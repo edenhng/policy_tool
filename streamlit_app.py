@@ -1,19 +1,16 @@
 import streamlit as st
 
-
-def main() :
-    #Create a side bar and format it
-    with st.sidebar:
-        st.markdown(
+def add_logo():
+    st.markdown(
         '''
         <style>
-            sidebar {
+            [data-testid="stSidebarNav"] {
                 background-image: url(http://placekitten.com/200/200);
                 background-repeat: no-repeat;
                 padding-top: 120px;
                 background-position: 20px 20px;
             }
-            sidebar ::before {
+            [data-testid="stSidebarNav"]::before {
                 content: "My Company Name";
                 margin-left: 20px;
                 margin-top: 20px;
@@ -25,6 +22,11 @@ def main() :
         ''',
         unsafe_allow_html=True,
     )
+
+def main() :
+    #Create a side bar and format it
+    with st.sidebar:
+        add_logo()
         st.title("Policy at a Glance")
         
     #File upload function    
