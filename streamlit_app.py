@@ -54,10 +54,9 @@ def main() :
         else:
             st.write("Author:", author)           
         st.write("Total pages:", page_count)
-        text = "AA"
-        st.write(text)
         #Once the file is uploaded, convert into text and create a word cloud                  
-        #text = "AA"
+        text = ""
+        st.write(text, "AAAAA")
         #for page in doc:
             #text += page.get_text()
             #return text
