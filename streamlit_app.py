@@ -57,7 +57,7 @@ def main() :
         #Once the file is uploaded, convert into text and create a word cloud                  
         text = ""
         for page in doc:
-            text += page.getText()
+            text += page.get_text()
             return text
         nlp=load_spacy_model()
         processed_text = preprocess_text(extracted_text, nlp)
