@@ -26,6 +26,7 @@ def create_word_cloud(text):
     plt.imshow(wordcloud, interpolation ='bilinear')                    
     plt.axis('off')
     st.pyplot(plt)
+    st.write('Check if it works?')
                           
 def main() :
     #Create a side bar and format it
