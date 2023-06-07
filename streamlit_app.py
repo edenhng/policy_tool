@@ -20,10 +20,9 @@ def preprocess_text(text, nlp):
     processed_text = " ".join(filtered_tokens)
     return processed_text
 
-def extracted_text_from_pdf(pdf_path):
-    doc = fitz.open(pdf_path)
+def extracted_text_from_pdf(pdf_file):
     text = ""
-    for page in doc:
+    for page in pdf_file:
         text += page.get_text()
         return text
 
