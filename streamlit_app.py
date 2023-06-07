@@ -11,7 +11,7 @@ def main() :
     st.header('A tool to mine and comprehend the policy')
     
     #File upload function    
-    uploaded_file = st.file_uploader("Load pdf: ", type=['pdf'])
+    uploaded_pdf = st.file_uploader("Load pdf: ", type=['pdf'])
     if uploaded_pdf is not None:
         doc = fitz.open(stream=uploaded_pdf.read(), filetype="pdf")
         #1. Extract the Title and Author
