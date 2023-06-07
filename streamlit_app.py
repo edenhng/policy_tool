@@ -7,13 +7,13 @@ def main() :
         st.markdown(
         '''
         <style>
-            body {
+            sidebar {
                 background-image: url(http://placekitten.com/200/200);
                 background-repeat: no-repeat;
                 padding-top: 120px;
                 background-position: 20px 20px;
             }
-            body ::before {
+            sidebar ::before {
                 content: "My Company Name";
                 margin-left: 20px;
                 margin-top: 20px;
