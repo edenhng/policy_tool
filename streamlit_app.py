@@ -62,7 +62,8 @@ def main() :
             return text
         nlp=load_spacy_model()
         processed_text = preprocess_text(text, nlp)
-        create_word_cloud(processed_text)                  
+        create_word_cloud(processed_text)     
+        st.write('Why it is up to this one?')
     
 if __name__ == "__main__":
     st.set_page_config(page_title="Testing Policy Tool", layout="wide")
