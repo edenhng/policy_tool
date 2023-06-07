@@ -12,6 +12,6 @@ spacy-streamlit>=1.0.0rc1, <1.1.0
 en_core_web_sm @ https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.4.0/en_core_web_sm-3.4.0-py3-none-any.whl
 
 #Visualisation Libraries
-wordcloud = 1.9.2
+wordcloud == 1.9.2
 seaborn
 matplotlib
