@@ -64,10 +64,10 @@ def main() :
         #Once the file is uploaded, convert into text and create a word cloud                  
         extracted_text = extracted_text_from_pdf(doc)
         st.write(extracted_text)
-        #nlp=load_spacy_model()
-        #processed_text = preprocess_text(text, nlp)
-        #create_word_cloud(processed_text)     
-        #st.write('Why it is up to this one?')
+        nlp=load_spacy_model()
+        processed_text = preprocess_text(text, nlp)
+        create_word_cloud(processed_text)     
+        st.write('Why it is up to this one?')
     
 if __name__ == "__main__":
     st.set_page_config(page_title="Testing Policy Tool", layout="wide")
