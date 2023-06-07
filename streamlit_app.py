@@ -24,7 +24,8 @@ def extracted_text_from_pdf(pdf_file):
     text = ""
     for page in pdf_file:
         text += page.get_text()
-
+    st.write(text)
+    
 def create_word_cloud(text):
     wordcloud = WordCloud(width=800, height = 400, max_words=100, background_color='white').generate(text)
     plt.figure(figsize=(10, 5))
@@ -61,9 +62,8 @@ def main() :
         st.write("Total pages:", page_count)
         #Once the file is uploaded, convert into text and create a word cloud                  
         extracted_text_from_pdf(doc)
-        st.write(extracted_text_from_pdf(doc))
         nlp=load_spacy_model()
-        processed_text = preprocess_text(extracted_text, nlp)
+        processed_text = preprocess_text(text, nlp)
         create_word_cloud(processed_text)     
         st.write('Why it is up to this one?')
     
