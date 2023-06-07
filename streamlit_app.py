@@ -19,7 +19,14 @@ def preprocess_text(text, nlp):
     ]
     processed_text = " ".join(filtered_tokens)
     return processed_text
-        
+
+def extracted_text_from_pdf(pdf_path):
+    doc. fitz.open(pdf_path)
+    text = ""
+    for page in doc:
+        text += page.get_text()
+        return text
+
 def create_word_cloud(text):
     wordcloud = WordCloud(width=800, height = 400, max_words=100, background_color='white').generate(text)
     plt.figure(figsize=(10, 5))
@@ -55,11 +62,8 @@ def main() :
             st.write("Author:", author)           
         st.write("Total pages:", page_count)
         #Once the file is uploaded, convert into text and create a word cloud                  
-        text = ""
-        for page in doc:
-            text += page.get_text()
-            return text
-        st.write(text)
+        extracted_text = extract_text_from_pdf(doc)
+        st.write(extracted_text)
         #nlp=load_spacy_model()
         #processed_text = preprocess_text(text, nlp)
         #create_word_cloud(processed_text)     
