@@ -7,6 +7,7 @@ from wordcloud import WordCloud
 import matplotlib.pyplot as plt
 import seaborn as sns
 import pandas as pd
+from tabulate import tabulate
 
 def load_spacy_model():
     nlp = spacy.load("en_core_web_sm")
@@ -46,7 +47,6 @@ def create_word_cloud_and_bar_chart(text):
     plt.xticks(rotation=45, ha='right')
     plt.tight_layout()
     st.pyplot(fig)
-
     
 def get_word_frequencies(processed_text):
     word_list = processed_text.split()
@@ -54,7 +54,18 @@ def get_word_frequencies(processed_text):
     for word in word_list:
         word_counts[word] = word_counts.get(word, 0) + 1
     return word_counts
-                          
+
+def get_TOC(doc):
+    toc = doc.get_toc()
+    sorted_toc=sorted(toc, key=lambda x: x[2])
+    table = []
+    for item in sorted_toc:
+        if item[0] == 1:
+            table.append([item[1], item[2]])
+    my_toc= tabulate(table, headers=["Title", "Page Number"], tablefmt = "grid"))
+    return my_toc
+           
+
 def main() :
     #Create a side bar and format it
     with st.sidebar:
@@ -86,6 +97,8 @@ def main() :
         nlp=load_spacy_model()
         processed_text = preprocess_text(extracted_text, nlp)
         create_word_cloud_and_bar_chart(processed_text)     
+        my_table=get_TOC(doc)
+        st.markdown(my_table)
         
 if __name__ == "__main__":
     st.set_page_config(page_title="Testing Policy Tool", layout="wide")
