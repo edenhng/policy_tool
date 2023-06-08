@@ -40,7 +40,7 @@ def create_word_cloud_and_bar_chart(text):
     #Create a subplot for bar chart
     plt.subplot(1, 2, 2)
     st.pyplot(plt)
-    sns.barplot(data=df_word_frequencies.head(10), x = 'Frequency", y=df_word_frequencies.index, palatte='viridis')
+    sns.barplot(data=df_word_frequencies.head(10), x = 'Frequency", y=df_word_frequencies.index, palette='viridis')
     plt.xlabel('Frequency')
     plt.ylabel('Word')
     plt.title('Top 10 Word Frequencies')
