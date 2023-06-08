@@ -64,7 +64,7 @@ def get_TOC(doc):
     df = pd.DataFrame(filtered_data, columns=['Key', 'Title', 'Page Number'])
     #Sort the Data Frame by Page Numer in ascending order
     df_sorted=df.sort_values(['Page Number'], ascending=[True])
-    return df_sorted
+    return df_sorted[['Title', 'Page Number']]
            
 
 def main() :
