@@ -59,7 +59,7 @@ def get_TOC(doc):
     toc = doc.get_toc()
     sorted_toc=sorted(toc, key=lambda x: x[2])
     #Filter the list to include only items with "key" is 1
-    filtered_data = [item for item in data if item[0] ==1]
+    filtered_data = [item for item in sorted_toc if item[0] ==1]
     #Create a DataFrame from the filtered data
     df = pd.DataFrame(filtered_data, columns=['Key', 'Title', 'Page Number'])
     #Sort the Data Frame by Title and Page Numer in ascending order
