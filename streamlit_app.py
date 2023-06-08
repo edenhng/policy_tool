@@ -32,7 +32,7 @@ def create_word_cloud_and_bar_chart(text):
     word_frequencies = get_word_frequencies(text)
     df_word_frequencies = pd.DataFrame.from_dict(word_frequencies, orient='index', columns=['Frequency'])
     df_word_frequencies = df_word_frequencies.sort_values(by='Frequency', ascending=False).head(10)
-    fig, axes = plt.subplots(1, 2, figsize=(10, 5))
+    fig, axes = plt.subplots(1, 2, figsize=(8, 5))
     # Create a subplot for word cloud
     axes[0].imshow(wordcloud, interpolation='bilinear')
     axes[0].axis('off')
