@@ -62,8 +62,8 @@ def get_TOC(doc):
     filtered_data = [item for item in sorted_toc if item[0] ==1]
     #Create a DataFrame from the filtered data
     df = pd.DataFrame(filtered_data, columns=['Key', 'Title', 'Page Number'])
-    #Sort the Data Frame by Title and Page Numer in ascending order
-    df_sorted=df.sort_values(['Title', 'Page Number'], ascending=[True, True])
+    #Sort the Data Frame by Page Numer in ascending order
+    df_sorted=df.sort_values(['Page Number'], ascending=[True])
     return df_sorted
            
 
