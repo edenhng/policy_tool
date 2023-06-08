@@ -8,6 +8,18 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import pandas as pd
 from tabulate import tabulate
+#Format Pages and Sidebar:
+# Optional -- adds the title and icon to the current page
+add_page_title()
+
+# Specify what pages should be shown in the sidebar, and what their titles 
+# and icons should be
+show_pages(
+    [
+        Page("streamlit_app.py", "Home", "🏠"),
+        Page("other_pages/page2.py", "Page 2", ":books:"),
+    ]
+)
 
 def load_spacy_model():
     nlp = spacy.load("en_core_web_sm")
