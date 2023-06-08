@@ -61,7 +61,6 @@ def main() :
         st.write("Total pages:", page_count)
         #Once the file is uploaded, convert into text and create a word cloud                  
         extracted_text = extracted_text_from_pdf(doc)
-        st.write(extracted_text)
         nlp=load_spacy_model()
         processed_text = preprocess_text(extracted_text, nlp)
         create_word_cloud(processed_text)     
