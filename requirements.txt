@@ -1,6 +1,7 @@
 #Core
 streamlit>=1.18.0
 streamlit-extras
+st_pages
 
 #PDF Processor
 PyMuPDF==1.22.3
