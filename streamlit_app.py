@@ -31,7 +31,7 @@ def create_word_cloud_and_bar_chart(text):
     wordcloud = WordCloud(width=800, height = 400, max_words=100, background_color='white').generate(text)
     word_frequencies = get_word_frequencies(text)
     df_word_frequencies = pd.DataFrame.from_dict(word_frequencies, orient='index', columns = ['Frequency'])
-    df_word_frequencies = df_word_frequencies.sort_values(by='Frequency', ascending=False) 
+    df_word_frequencies = df_word_frequencies.sort_values(by='Frequency', ascending=False).head(10) 
     plt.figure(figsize=(15, 5))
     #Create a subplot for word cloud
     plt.subplot(1, 2, 1)
@@ -40,7 +40,7 @@ def create_word_cloud_and_bar_chart(text):
     #Create a subplot for bar chart
     plt.subplot(1, 2, 2)
     st.pyplot(plt)
-    sns.barplot(data=df_word_frequencies.head(10), x = 'Frequency', y=df_word_frequencies.index, palette='viridis')
+    sns.barplot(data=df_word_frequencies, x = df_word_frequencies.index, y='Frequency', palette='viridis')
     plt.xlabel('Frequency')
     plt.ylabel('Word')
     plt.title('Top 10 Word Frequencies')
