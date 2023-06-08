@@ -42,8 +42,8 @@ def create_word_cloud_and_bar_chart(text):
     axes[1].set_ylabel('Frequency')
     axes[1].set_title('Top 10 Word Frequencies')
     # Rotate and align x-axis labels diagonally
-    axes[1].set_xticklabels(axes[1].get_xticklabels(), rotation=45, pad=-20)
-    plt.xticks(rotation=45)
+    axes[1].tick_params(axis='x', rotation=45, pad=-20)
+    plt.xticks(rotation=45, ha='right')
     plt.tight_layout()
     st.pyplot(fig)
 
