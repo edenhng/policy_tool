@@ -62,7 +62,7 @@ def get_TOC(doc):
     for item in sorted_toc:
         if item[0] == 1:
             table.append([item[1], item[2]])
-    my_toc= tabulate(table, headers=["Title", "Page Number"], tablefmt = "grid"))
+    my_toc= tabulate(table, headers=["Title", "Page Number"], tablefmt = "grid")
     return my_toc
            
 
