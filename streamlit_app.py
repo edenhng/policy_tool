@@ -39,7 +39,6 @@ def create_word_cloud_and_bar_chart(text):
     plt.axis('off')
     #Create a subplot for bar chart
     plt.subplot(1, 2, 2)
-    st.pyplot(plt)
     sns.barplot(data=df_word_frequencies, x = df_word_frequencies.index, y='Frequency', palette='viridis')
     plt.xlabel('Frequency')
     plt.ylabel('Word')
