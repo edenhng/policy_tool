@@ -28,11 +28,11 @@ def extracted_text_from_pdf(pdf_file):
     return text
     
 def create_word_cloud_and_bar_chart(text):
-    wordcloud = WordCloud(width=800, height=600, max_words=100, background_color='white').generate(text)
+    wordcloud = WordCloud(width=800, height=500, max_words=100, background_color='white').generate(text)
     word_frequencies = get_word_frequencies(text)
     df_word_frequencies = pd.DataFrame.from_dict(word_frequencies, orient='index', columns=['Frequency'])
     df_word_frequencies = df_word_frequencies.sort_values(by='Frequency', ascending=False).head(10)
-    fig, axes = plt.subplots(1, 2, figsize=(15, 12))
+    fig, axes = plt.subplots(1, 2, figsize=(15, 4))
     # Create a subplot for word cloud
     axes[0].imshow(wordcloud, interpolation='bilinear')
     axes[0].axis('off')
