@@ -58,12 +58,13 @@ def get_word_frequencies(processed_text):
 def get_TOC(doc):
     toc = doc.get_toc()
     sorted_toc=sorted(toc, key=lambda x: x[2])
-    table = []
-    for item in sorted_toc:
-        if item[0] == 1:
-            table.append([item[1], item[2]])
-    my_toc= tabulate(table, headers=["Title", "Page Number"], tablefmt = "grid")
-    return my_toc
+    #Filter the list to include only items with "key" is 1
+    filtered_data = [item for item in data if item[0] ==1]
+    #Create a DataFrame from the filtered data
+    df = pd.DataFrame(filtered_data, columns=['Key', 'Title', 'Page Number'])
+    #Sort the Data Frame by Title and Page Numer in ascending order
+    df_sorted=df.sort_values(['Title', 'Page Number'], ascending=[True, True])
+    return df_sorted
            
 
 def main() :
@@ -98,7 +99,7 @@ def main() :
         processed_text = preprocess_text(extracted_text, nlp)
         create_word_cloud_and_bar_chart(processed_text)     
         my_table=get_TOC(doc)
-        st.markdown(my_table)
+        st.table(my_table)
         
 if __name__ == "__main__":
     st.set_page_config(page_title="Testing Policy Tool", layout="wide")
