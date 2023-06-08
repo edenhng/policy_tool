@@ -6,6 +6,7 @@ from spacy.lang.en.stop_words import STOP_WORDS
 from wordcloud import WordCloud
 import matplotlib.pyplot as plt
 import seaborn as sns
+import pandas as pd
 
 def load_spacy_model():
     nlp = spacy.load("en_core_web_sm")
@@ -26,12 +27,32 @@ def extracted_text_from_pdf(pdf_file):
         text += page.get_text()
     return text
     
-def create_word_cloud(text):
+def create_word_cloud_and_bar_chart(text):
     wordcloud = WordCloud(width=800, height = 400, max_words=100, background_color='white').generate(text)
-    plt.figure(figsize=(10, 5))
+    word_frequencies = get_word_frequencies(text)
+    df_word_frequencies = pd.DataFrame.from_dict(word_frequencies, orient='index', columns = ['Frequency'])
+    df_word_frequencies = df_word_frequencies.sort_values(by='Frequency', ascending=False) 
+    plt.figure(figsize=(15, 5))
+    #Create a subplot for word cloud
+    plt.subplot(1, 2, 1)
     plt.imshow(wordcloud, interpolation ='bilinear')                    
     plt.axis('off')
+    #Create a subplot for bar chart
+    plt.subplot(1, 2, 2)
     st.pyplot(plt)
+    sns.barplot(data=df_word_frequencies.head(10), x = 'Frequency", y=df_word_frequencies.index, palatte'viridis')
+    plt.xlabel('Frequency')
+    plt.ylabel('Word')
+    plt.title('Top 10 Word Frequencies')
+    plt.tight_layout
+    st.pyplot(plt)
+    
+def get_word_frequencies(processed_text):
+    word_list = processed_text.split()
+    word_counts = {}
+    for word in word_list:
+        word_counts[word] = word_counts.get(word, 0) + 1
+    return word_counts
                           
 def main() :
     #Create a side bar and format it
@@ -63,7 +84,7 @@ def main() :
         extracted_text = extracted_text_from_pdf(doc)
         nlp=load_spacy_model()
         processed_text = preprocess_text(extracted_text, nlp)
-        create_word_cloud(processed_text)     
+        create_word_cloud_and_bar_chart(processed_text)     
         
 if __name__ == "__main__":
     st.set_page_config(page_title="Testing Policy Tool", layout="wide")
