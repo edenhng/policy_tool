@@ -44,7 +44,6 @@ def create_word_cloud_and_bar_chart(text):
     plt.xlabel('Frequency')
     plt.ylabel('Word')
     plt.title('Top 10 Word Frequencies')
-    plt.tight_layout
     st.pyplot(plt)
     
 def get_word_frequencies(processed_text):
