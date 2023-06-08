@@ -28,22 +28,22 @@ def extracted_text_from_pdf(pdf_file):
     return text
     
 def create_word_cloud_and_bar_chart(text):
-    wordcloud = WordCloud(width=800, height = 400, max_words=100, background_color='white').generate(text)
+    wordcloud = WordCloud(width=800, height=600, max_words=100, background_color='white').generate(text)
     word_frequencies = get_word_frequencies(text)
-    df_word_frequencies = pd.DataFrame.from_dict(word_frequencies, orient='index', columns = ['Frequency'])
-    df_word_frequencies = df_word_frequencies.sort_values(by='Frequency', ascending=False).head(10) 
-    plt.figure(figsize=(15, 5))
-    #Create a subplot for word cloud
-    plt.subplot(1, 2, 1)
-    plt.imshow(wordcloud, interpolation ='bilinear')                    
-    plt.axis('off')
-    #Create a subplot for bar chart
-    plt.subplot(1, 2, 2)
-    sns.barplot(data=df_word_frequencies, x = df_word_frequencies.index, y='Frequency', palette='viridis')
-    plt.xlabel('Frequency')
-    plt.ylabel('Word')
-    plt.title('Top 10 Word Frequencies')
-    st.pyplot(plt)
+    df_word_frequencies = pd.DataFrame.from_dict(word_frequencies, orient='index', columns=['Frequency'])
+    df_word_frequencies = df_word_frequencies.sort_values(by='Frequency', ascending=False).head(10)
+    fig, axes = plt.subplots(1, 2, figsize=(15, 5))
+    # Create a subplot for word cloud
+    axes[0].imshow(wordcloud, interpolation='bilinear')
+    axes[0].axis('off')
+    # Create a subplot for bar chart
+    sns.barplot(ax=axes[1], data=df_word_frequencies, x=df_word_frequencies.index, y='Frequency', palette='viridis')
+    axes[1].set_xlabel('Word')
+    axes[1].set_ylabel('Frequency')
+    axes[1].set_title('Top 10 Word Frequencies')
+    axes[1].tick_params(axis='x', rotation=45, ha='right')
+    plt.tight_layout()
+    st.pyplot(fig)
     
 def get_word_frequencies(processed_text):
     word_list = processed_text.split()
