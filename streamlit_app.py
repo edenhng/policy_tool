@@ -17,7 +17,7 @@ def preprocess_text(text, nlp):
         token.lemma_ for token in doc
         if token.is_alpha and not token.is_stop and token.lemma_ not in STOP_WORDS
     ]
-    processed_text = " ".join(filtered_tokens)
+    processed_text = " ".join(filtered_token)
     return processed_text
 
 def extracted_text_from_pdf(pdf_file):
