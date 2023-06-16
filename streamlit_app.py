@@ -9,6 +9,10 @@ import seaborn as sns
 import pandas as pd
 from tabulate import tabulate
 
+class SessionState:
+    def __init__(self, **kwargs):
+        self.__dict__.update(kwargs)
+
 def load_spacy_model():
     nlp = spacy.load("en_core_web_sm")
     return nlp
@@ -68,6 +72,7 @@ def get_TOC(doc):
            
 
 def main() :
+    session_state = SessionState(pdf_file=None)
     #Create a side bar and format it
     with st.sidebar:
         st.title("Policy at a Glance")  
@@ -78,7 +83,9 @@ def main() :
     #File upload function    
     uploaded_pdf = st.file_uploader("Load pdf: ", type=['pdf'])
     if uploaded_pdf is not None:
-        doc = fitz.open(stream=uploaded_pdf.read(), filetype="pdf")
+        session_state.pdf_file = fitz.open(stream=uploaded_pdf.read(), filetype="pdf")
+    if session_state.pdf_file is not None:
+        doc = session_state.pdf_file
         #1. Extract the Title and Author
         metadata = doc.metadata 
         page_count = doc.page_count
