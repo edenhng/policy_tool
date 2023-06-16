@@ -52,7 +52,7 @@ def run_lda(pdf_file):
     st.write("Coherence Score: ", coherence_score)
 
 # Streamlit app
-def main(uploaded_pdf):
+def main():
     st.title("LDA Topic Modeling")
     #Retrieve the stored PDF file from the session state
     session_state = get_session_state()
