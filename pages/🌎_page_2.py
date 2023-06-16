@@ -24,7 +24,6 @@ def preprocess_document(pdf_file):
         working_file = st.session_state['working_file']
         # Extract text from the PDF file
         text = extracted_text_from_pdf(working_file)
-        st.write(text, "Hello testing if there is text")
   
     # Tokenize the document
     doc = nlp(text)
@@ -35,18 +34,15 @@ def preprocess_document(pdf_file):
             continue
         lemma = token.lemma_.lower().strip()
         processed_tokens.append(lemma)
-    if processed_tokens is None:
-        st.write("Does this work?")
-    else:
-        st.write("This definitely works")
     return processed_tokens
 
 def run_lda(pdf_file):
     # Preprocess the document
     tokens = preprocess_document(pdf_file)
-    if not tokens:
+    if tokens is None:
         st.warning("No tokens found in the document.")
-        return
+    else:
+        st.write("It is working")
     # Create a dictionary from the tokens
     dictionary = corpora.Dictionary([tokens])
 
