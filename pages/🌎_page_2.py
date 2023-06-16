@@ -68,8 +68,7 @@ def main():
 def get_session_state():
     if 'working_file' not in st.session_state:
         working_file = st.session_state['working_file']
-    return working_file
-
+        
 if __name__ == "__main__":
     main()
 
