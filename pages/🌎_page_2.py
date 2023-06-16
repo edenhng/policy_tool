@@ -52,12 +52,14 @@ def run_lda(pdf_file):
     st.write("Coherence Score: ", coherence_score)
 
 # Streamlit app
-def main(pdf_file):
+def main(uploaded_pdf):
     st.title("LDA Topic Modeling")
-
-    # Run LDA and display the results
-    run_lda(pdf_file)
+    if uploaded_pdf is not None:
+        # Convert the PDF file to a PyMuPDF document object
+        doc = fitz.open(stream=uploaded_pdf.read(), filetype="pdf")
+        # Run LDA and display the results
+        run_lda(pdf_file)
 
 if __name__ == "__main__":
-    main(session_state.pdf_file)
+    main(uploaded_pdf)
 
