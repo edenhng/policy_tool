@@ -10,6 +10,13 @@ import pyLDAvis.gensim_models as gensimvis
 # Load the Spacy English model
 nlp = spacy.load('en_core_web_sm')
 
+def extracted_text_from_pdf(file):
+    doc = fitz.open(file)
+    text = ""
+    for page in doc:
+        text += page.get_text()
+    return text
+    
 def preprocess_document(pdf_file):
     # Extract text from the PDF file
     text = extracted_text_from_pdf(pdf_file)
