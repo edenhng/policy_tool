@@ -60,25 +60,15 @@ def run_lda(pdf_file):
 # Streamlit app
 def main():
     st.title("LDA Topic Modeling")
-    if 'working_file' in st.session_state:
-        working_file = st.session_state['working_file']
-        st.subheader("Working File from Page 1:")
-    #Retrieve the stored PDF file from the session state
-    session_state = get_session_state()
-    pdf_file = session_state.get('pdf_file', None) #Retrieve the 'pdf_file' attribute from session state
-    st.write("Check if it can work down until this way")
-    st.write(f"Type: {type(pdf_file)}")
-    text = ""
-    with fitz.open(pdf_file) as doc:
-        for page in doc:
-            text += page.get_text()
-    st.write(text, "Hello")
-    #run_lda(pdf_file)
+    get_session_state()
+    run_lda(pdf_file)
 
+
+#Retrieve the stored PDF file from the session state
 def get_session_state():
-    if 'session_state' not in st.session_state:
-        st.session_state['session_state'] = {'pdf_file': None}
-    return st.session_state['session_state']
+    if 'working_file' not in st.session_state:
+        pdf_file = st.session_state['working_file']
+    return pdf_file
 
 if __name__ == "__main__":
     main()
