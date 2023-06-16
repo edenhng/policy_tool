@@ -107,6 +107,8 @@ def main() :
         create_word_cloud_and_bar_chart(processed_text)     
         my_table=get_TOC(doc)
         st.table(my_table) 
+    if 'working_file' not in st.session_state:
+        st.session_state['working_file'] = session_state.pdf_file
         
 if __name__ == "__main__":
     st.set_page_config(page_title="Testing Policy Tool", layout="wide")
