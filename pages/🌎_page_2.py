@@ -65,7 +65,7 @@ def main():
     pdf_file = session_state.get('pdf_file', None) #Retrieve the 'pdf_file' attribute from session state
     st.write("Check if it can work down until this way")
     st.write(f"Type: {type(pdf_file)}"
-    run_lda(pdf_file)
+    #run_lda(pdf_file)
 
 def get_session_state():
     if 'session_state' not in st.session_state:
