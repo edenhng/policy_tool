@@ -39,13 +39,13 @@ def preprocess_document(pdf_file):
 def run_lda(pdf_file):
     # Preprocess the document
     tokens = preprocess_document(pdf_file)
+
+    # Create a dictionary from the tokens
+    dictionary = corpora.Dictionary([tokens])
     if tokens is None:
         st.warning("No tokens found in the document.")
     else:
-        st.write("It is working")
-    # Create a dictionary from the tokens
-    dictionary = corpora.Dictionary([tokens])
-
+        st.write("It is working")    
     # Create a corpus using the dictionary
     corpus = [dictionary.doc2bow(tokens)]
 
