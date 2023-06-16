@@ -69,7 +69,7 @@ def main():
     with fitz.open(pdf_file) as doc:
         for page in doc:
             text += page.get_text()
-    st.write(text)
+    st.write(text, "Hello")
     #run_lda(pdf_file)
 
 def get_session_state():
