@@ -42,7 +42,7 @@ def run_lda(pdf_file):
 
     # Create a dictionary from the tokens
     dictionary = corpora.Dictionary([tokens])
-    if tokens is None:
+    if dictionary is None:
         st.warning("No tokens found in the document.")
     else:
         st.write("It is working")    
