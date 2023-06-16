@@ -57,10 +57,7 @@ def main():
     #Retrieve the stored PDF file from the session state
     session_state = get_session_state()
     pdf_file = session_state.get('pdf_file', None) #Retrieve the 'pdf_file' attribute from session state
-    
-    if pdf_file is not None:
-        # Run LDA and display the results
-        run_lda(pdf_file)
+    run_lda(pdf_file)
 
 def get_session_state():
     if 'session_state' not in st.session_state:
