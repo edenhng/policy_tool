@@ -60,14 +60,10 @@ def run_lda(pdf_file):
 # Streamlit app
 def main():
     st.title("LDA Topic Modeling")
-    get_session_state()
-    run_lda(working_file)
-
-
-#Retrieve the stored PDF file from the session state
-def get_session_state():
+    #Retrieve the stored PDF file from the session state
     if 'working_file' not in st.session_state:
         working_file = st.session_state['working_file']
+    run_lda(working_file)
         
 if __name__ == "__main__":
     main()
