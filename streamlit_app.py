@@ -83,9 +83,9 @@ def main() :
     #File upload function    
     uploaded_pdf = st.file_uploader("Load pdf: ", type=['pdf'])
     if uploaded_pdf is not None:
-        session_state.pdf_file = fitz.open(stream=uploaded_pdf.read(), filetype="pdf")
-    if session_state.pdf_file is not None:
-        doc = session_state.pdf_file
+        session_state['pdf_file'] = fitz.open(stream=uploaded_pdf.read(), filetype="pdf")
+    if session_state['pdf_file'] is not None:
+        doc = session_state['pdf_file']
         #1. Extract the Title and Author
         metadata = doc.metadata 
         page_count = doc.page_count
@@ -106,8 +106,7 @@ def main() :
         processed_text = preprocess_text(extracted_text, nlp)
         create_word_cloud_and_bar_chart(processed_text)     
         my_table=get_TOC(doc)
-        st.table(my_table)
-        st.session_state["working_pdf"] = doc 
+        st.table(my_table) 
         
 if __name__ == "__main__":
     st.set_page_config(page_title="Testing Policy Tool", layout="wide")
