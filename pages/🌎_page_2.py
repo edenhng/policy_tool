@@ -54,9 +54,11 @@ def run_lda(pdf_file):
 # Streamlit app
 def main(uploaded_pdf):
     st.title("LDA Topic Modeling")
-    if uploaded_pdf is not None:
-        # Convert the PDF file to a PyMuPDF document object
-        doc = fitz.open(stream=uploaded_pdf.read(), filetype="pdf")
+    #Retrieve the stored PDF file from the session state
+    session_state = get_session_state()
+    pdf_file = session_state.pdf_file
+    
+    if pdf_file is not None:
         # Run LDA and display the results
         run_lda(pdf_file)
 
