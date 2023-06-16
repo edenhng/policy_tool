@@ -28,6 +28,8 @@ def preprocess_document(pdf_file):
   
     # Tokenize the document
     doc = nlp(text)
+    if doc is None:
+        st.write("there is something wrong with doc")
     # Remove stop words, punctuation, and lemmatize the tokens
     processed_tokens = []
     for token in doc:
