@@ -61,14 +61,14 @@ def run_lda(pdf_file):
 def main():
     st.title("LDA Topic Modeling")
     get_session_state()
-    run_lda(pdf_file)
+    run_lda(working_file)
 
 
 #Retrieve the stored PDF file from the session state
 def get_session_state():
     if 'working_file' not in st.session_state:
-        pdf_file = st.session_state['working_file']
-    return pdf_file
+        working_file = st.session_state['working_file']
+    return working_file
 
 if __name__ == "__main__":
     main()
