@@ -16,7 +16,7 @@ def extracted_text_from_pdf(file):
     text = ""
     for page in doc:
         text += page.get_text()
-    return text
+    return st.write(text)
     
 def preprocess_document(pdf_file):
     # Extract text from the PDF file
