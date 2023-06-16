@@ -28,10 +28,6 @@ def preprocess_document(pdf_file):
   
     # Tokenize the document
     doc = nlp(text)
-    if doc is None:
-        st.write("there is something wrong with doc")
-    else:
-        st.write("doc nlp is working")
     # Remove stop words, punctuation, and lemmatize the tokens
     processed_tokens = []
     for token in doc:
@@ -39,7 +35,10 @@ def preprocess_document(pdf_file):
             continue
         lemma = token.lemma_.lower().strip()
         processed_tokens.append(lemma)
-
+    if processed_tokens is None:
+        st.write("Does this work?")
+    else:
+        st.write("This definitely works")
     return processed_tokens
 
 def run_lda(pdf_file):
