@@ -60,6 +60,11 @@ def main(uploaded_pdf):
         # Run LDA and display the results
         run_lda(pdf_file)
 
+def get_session_state():
+    if 'session_state' not in st.session_state:
+        st.session_state['session_state'] = {'pdf_file': None}
+    return st.session_state['session_state']
+
 if __name__ == "__main__":
-    main(uploaded_pdf)
+    main()
 
