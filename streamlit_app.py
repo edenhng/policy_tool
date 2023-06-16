@@ -107,8 +107,8 @@ def main() :
         create_word_cloud_and_bar_chart(processed_text)     
         my_table=get_TOC(doc)
         st.table(my_table)
-    return uploaded_pdf
+        st.session_state["working_pdf"] = doc 
         
 if __name__ == "__main__":
     st.set_page_config(page_title="Testing Policy Tool", layout="wide")
-    uploaded_pdf = main()
+    main()
