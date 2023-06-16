@@ -30,7 +30,7 @@ def preprocess_document(pdf_file):
     doc = nlp(text)
     if doc is None:
         st.write("there is something wrong with doc")
-    else
+    else:
         st.write("doc nlp is working")
     # Remove stop words, punctuation, and lemmatize the tokens
     processed_tokens = []
