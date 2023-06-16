@@ -1,5 +1,6 @@
 import streamlit as st
 import spacy
+import fitz #import PyMUPDF
 from spacy.lang.en.stop_words import STOP_WORDS
 import string
 import gensim
