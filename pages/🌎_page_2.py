@@ -70,7 +70,7 @@ def main():
     #Retrieve the stored PDF file from the session state
     if 'working_file' in st.session_state:
         working_file = st.session_state['working_file']
-        st.write("Working File from Main Page")
+        st.write("Found a working File from Main Page")
         run_lda(working_file)
     else:
         st.info("No working file found from Page 1.")
