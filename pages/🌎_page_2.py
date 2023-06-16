@@ -42,13 +42,13 @@ def run_lda(pdf_file):
 
     # Create a dictionary from the tokens
     dictionary = corpora.Dictionary([tokens])
-    if dictionary is None:
-        st.warning("No tokens found in the document.")
-    else:
-        st.write("It is working")    
+ 
     # Create a corpus using the dictionary
     corpus = [dictionary.doc2bow(tokens)]
-
+    if corpus is None:
+        st.warning("No tokens found in the document.")
+    else:
+        st.write("It is working")       
     # Create the LDA model
     lda_model = models.LdaModel(corpus=corpus, id2word=dictionary, num_topics=10, passes=10)
 
