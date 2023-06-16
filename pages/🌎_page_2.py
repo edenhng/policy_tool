@@ -63,7 +63,8 @@ def main():
     #Retrieve the stored PDF file from the session state
     if 'working_file' not in st.session_state:
         working_file = st.session_state['working_file']
-    run_lda(working_file)
+    pdf_file = working_file
+    run_lda(pdf_file)
         
 if __name__ == "__main__":
     main()
