@@ -1,5 +1,4 @@
 import streamlit as st
-from session import session_state
 import spacy
 import fitz #import PyMUPDF
 from spacy.lang.en.stop_words import STOP_WORDS
@@ -61,8 +60,9 @@ def run_lda(pdf_file):
 # Streamlit app
 def main():
     st.title("LDA Topic Modeling")
-    if session_state.pdf_file is not None:
-        st.write("Test if the file is being recognise")
+    if 'working_file' in st.session_state:
+        working_file = st.session_state['working_file']
+        st.subheader("Working File from Page 1:")
     #Retrieve the stored PDF file from the session state
     session_state = get_session_state()
     pdf_file = session_state.get('pdf_file', None) #Retrieve the 'pdf_file' attribute from session state
