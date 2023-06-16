@@ -61,10 +61,13 @@ def run_lda(pdf_file):
 def main():
     st.title("LDA Topic Modeling")
     #Retrieve the stored PDF file from the session state
-    if 'working_file' not in st.session_state:
+    if 'working_file' in st.session_state:
         working_file = st.session_state['working_file']
-    pdf_file = working_file
-    run_lda(pdf_file)
+        st.write("Working File from Main Page")
+        run_lda(working_file)
+    else:
+        st.info("No working file found from Page 1.")
+    
         
 if __name__ == "__main__":
     main()
