@@ -34,6 +34,7 @@ def preprocess_document(pdf_file):
             continue
         lemma = token.lemma_.lower().strip()
         processed_tokens.append(lemma)
+    st.write(processed_tokens)
     return processed_tokens
 
 def run_lda(pdf_file):
@@ -48,7 +49,7 @@ def run_lda(pdf_file):
  
     # Create a corpus using the dictionary
     corpus = [dictionary.doc2bow(tokens)]
-    st.write(corpus)
+    
     # Create the LDA model
     lda_model = gensim.models.ldamodel.LdaModel(corpus=corpus, id2word=dictionary, num_topics=10, random_state=100, 
                                                 update_every=1, chunksize=100, passes=10, alpha='auto', per_word_topics=True)
