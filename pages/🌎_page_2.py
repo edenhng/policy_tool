@@ -50,7 +50,7 @@ def run_lda(pdf_file):
     else:
         st.write("It is working")       
     # Create the LDA model
-    lda_model = models.LdaModel(corpus=corpus, id2word=dictionary, num_topics=10, passes=10)
+    lda_model = gensim.models.ldamodel.LdaModel(corpus=corpus, id2word=dictionary, num_topics=10, random_state=100,\ update_every=1, chunksize=100, passes=10, alpha='auto', per_word_topics=True)
 
     # Compute the coherence score
     coherence_model = gensim.models.CoherenceModel(model=lda_model, texts=[tokens], dictionary=dictionary, coherence='c_v')
