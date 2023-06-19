@@ -78,7 +78,7 @@ def main() :
     #Create a side bar and format it
     with st.sidebar:
         st.title("Policy at a Glance")  
-    add_logo("http://placekitten.com/120/120")
+    add_logo("https://imgur.com/y7oNgZ4")
     
     st.header('A tool to mine and comprehend the policy')
     
