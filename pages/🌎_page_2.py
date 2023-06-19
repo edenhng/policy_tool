@@ -16,7 +16,10 @@ def extracted_text_from_pdf(pdf_file):
     with fitz.open(pdf_file) as doc:
         for page in doc:
             text += page.get_text()
-    st.write(text)
+    if len(text) == 0:
+        st.write("Text is empty")
+    else:
+        st.write("Text is visible")
     return text
     
 def preprocess_document(pdf_file):
