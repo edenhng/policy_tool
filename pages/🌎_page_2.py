@@ -43,10 +43,9 @@ def main():
     if 'processed_tokens' in st.session_state:
         processed_tokens = st.session_state.processed_tokens
         st.write("Found a working File from Main Page")
-        st.write(processed_tokens)
-        #run_lda(working_file)
     else:
         st.info("No working file found from Page 1.")
+        run_lda(processed_tokens)
     
         
 if __name__ == "__main__":
