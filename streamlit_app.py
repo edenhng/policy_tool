@@ -104,7 +104,8 @@ def main() :
         extracted_text = extracted_text_from_pdf(doc)
         nlp=load_spacy_model()
         processed_text = preprocess_text(extracted_text, nlp)
-        session_state.processed_text = processed_text
+        if 'processed_text' not in st.session_state:
+            st.session_state.processed_text = processed_text
         create_word_cloud_and_bar_chart(processed_text)     
         my_table=get_TOC(doc)
         st.table(my_table) 
