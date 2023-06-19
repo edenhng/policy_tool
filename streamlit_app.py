@@ -19,7 +19,7 @@ def load_spacy_model():
 
 def preprocess_text(text, nlp):
     doc = nlp(text)
-    processed_token = []
+    processed_tokens = []
     for token in doc:
         if token.is_alpha and not token.is_stop and token.lemma_ not in STOP_WORDS:
             lemma = token.lemma_.lower().strip()
