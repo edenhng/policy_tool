@@ -44,10 +44,11 @@ def main():
     #Retrieve the stored PDF file from the session state
     if 'processed_tokens' in st.session_state:
         processed_tokens = st.session_state.processed_tokens
-        st.write("Found a working File from Main Page")
+        st.info("Found a working File from Main Page")
+        run_lda(processed_tokens)
     else:
-        st.info("No working file found from Page 1.")
-    run_lda(processed_tokens)
+        st.warning("No working file found from Page 1.")
+    
     
         
 if __name__ == "__main__":
