@@ -45,7 +45,7 @@ def main():
         st.write("Found a working File from Main Page")
     else:
         st.info("No working file found from Page 1.")
-        run_lda(processed_tokens)
+    run_lda(processed_tokens)
     
         
 if __name__ == "__main__":
