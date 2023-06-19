@@ -78,7 +78,7 @@ def main() :
     #Create a side bar and format it
     with st.sidebar:
         st.title("Policy at a Glance")  
-    add_logo("https://i.imgur.com/F06Xt4B.png")
+    add_logo("https://i.imgur.com/N6QxVA9.png")
     
     st.header('A tool to mine and comprehend the policy')
     
