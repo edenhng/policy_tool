@@ -11,9 +11,9 @@ import pyLDAvis.gensim_models as gensimvis
 # Load the Spacy English model
 nlp = spacy.load('en_core_web_sm')
 
-def extracted_text_from_pdf(pdf_file):
+def extracted_text_from_pdf(upload_file):
     text = ""
-    for page in pdf_file:
+    for page in upload_file:
         text += page.get_text()
     if len(text) == 0:
         st.write("Text is empty")
