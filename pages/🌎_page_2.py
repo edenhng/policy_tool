@@ -39,7 +39,10 @@ def preprocess_document(pdf_file):
 def run_lda(pdf_file):
     # Preprocess the document
     tokens = preprocess_document(pdf_file)
-
+    if not tokens:
+        st.warning("No tokens found in the document.")
+        return
+        
     # Create a dictionary from the tokens
     dictionary = corpora.Dictionary([tokens])
  
