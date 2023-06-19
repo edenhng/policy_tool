@@ -13,8 +13,9 @@ nlp = spacy.load('en_core_web_sm')
 
 def extracted_text_from_pdf(upload_file):
     text = ""
-    for page in upload_file:
-        text += page.get_text()
+    with fitz.open(upload_file) as doc:
+        for page in upload_file:
+            text += page.get_text()
     if len(text) == 0:
         st.write("Text is empty")
     else:
