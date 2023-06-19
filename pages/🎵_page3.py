@@ -18,7 +18,6 @@ def main():
         if money_sentences:
             st.subheader("Sentences with 'MONEY' entities:")
             for sentence in money_sentences:
-                st.write(sentence.text)
                 highlight_money_entities(sentence)
                 st.write("---")
         else:
