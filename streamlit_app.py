@@ -104,11 +104,11 @@ def main() :
         extracted_text = extracted_text_from_pdf(doc)
         nlp=load_spacy_model()
         processed_text = preprocess_text(extracted_text, nlp)
+        session_state.processed_text = processed_text
         create_word_cloud_and_bar_chart(processed_text)     
         my_table=get_TOC(doc)
         st.table(my_table) 
-    if 'working_file' not in st.session_state:
-        st.session_state['working_file'] = session_state.processed_text
+       
         
 if __name__ == "__main__":
     st.set_page_config(page_title="Testing Policy Tool", layout="wide")
