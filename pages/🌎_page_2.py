@@ -24,7 +24,7 @@ def preprocess_document(pdf_file):
         working_file = st.session_state['working_file']
         # Extract text from the PDF file
         text = extracted_text_from_pdf(working_file)
-    st.write(text)
+    st.write(text, "If there are any text in place?")
   
     # Tokenize the document
     doc = nlp(text)
