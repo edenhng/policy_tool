@@ -11,6 +11,9 @@ import pyLDAvis.gensim_models as gensimvis
 # Load the Spacy English model
 nlp = spacy.load('en_core_web_sm')
 
+
+
+'''
 def extracted_text_from_pdf(upload_file):
     text = ""
     with fitz.open(upload_file) as doc:
@@ -21,7 +24,7 @@ def extracted_text_from_pdf(upload_file):
     else:
         st.write("Text is visible")
     return text
-
+'''
 '''
 def preprocess_document(pdf_file):
     # Extract text from the PDF file
@@ -72,11 +75,12 @@ def run_lda(pdf_file):
 def main():
     st.title("LDA Topic Modeling")
     #Retrieve the stored PDF file from the session state
-    if 'working_file' in st.session_state:
-        working_file = st.session_state['working_file']
+    if 'processed_text' in st.session_state:
+        processed_text = st.session_state['working_file']
         st.write("Found a working File from Main Page")
+        st.write(processed_text)
         #run_lda(working_file)
-        extracted_text_from_pdf(working_file)
+        #extracted_text_from_pdf(working_file)
     else:
         st.info("No working file found from Page 1.")
     
