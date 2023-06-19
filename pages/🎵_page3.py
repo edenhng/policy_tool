@@ -13,12 +13,7 @@ def main():
     if st.button("Extract Sentences"):
         nlp = spacy.load("en_core_web_sm")
         doc = nlp(document)
-        money_sentences = []
-
-        for sent in doc.sents:
-            sent_entities = [ent for ent in sent.ents if ent.label_ == "MONEY"]
-            if sent_entities:
-                money_sentences.append(sent)
+        money_sentences = [sent for sent in doc.sents if any(ent.label_ == "MONEY" for ent in sent.ents)]
 
         if money_sentences:
             st.subheader("Sentences with 'MONEY' entities:")
