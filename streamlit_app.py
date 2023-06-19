@@ -25,7 +25,7 @@ def preprocess_text(text, nlp):
             lemma = token.lemma_.lower().strip()
             processed_tokens.append(lemma)
     processed_text = " ".join(processed_tokens) 
-    return preprocess_text, processed_tokens
+    return processed_text, processed_tokens
 
 def extracted_text_from_pdf(pdf_file):
     text = ""
