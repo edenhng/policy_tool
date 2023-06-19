@@ -1,5 +1,10 @@
 import spacy
 import streamlit as st
+from spacy import displacy
+
+def highlight_money_entities(doc):
+    html = displacy.render(doc, style="ent", options={"ents": ["MONEY"]}, page=True)
+    st.components.v1.html(html, height=400, scrolling=True)
 
 def main():
     st.title("Named Entity Recognition with spaCy")
@@ -11,17 +16,18 @@ def main():
         money_sentences = []
 
         for sent in doc.sents:
-            sent_entities = [ent.text for ent in sent.ents if ent.label_ == "MONEY"]
+            sent_entities = [ent for ent in sent.ents if ent.label_ == "MONEY"]
             if sent_entities:
-                money_sentences.append(sent.text)
+                money_sentences.append(sent)
 
         if money_sentences:
             st.subheader("Sentences with 'MONEY' entities:")
             for sentence in money_sentences:
-                st.write(sentence)
+                st.write(sentence.text)
+                highlight_money_entities(sentence)
+                st.write("---")
         else:
             st.write("No sentences with 'MONEY' entities found.")
 
 if __name__ == "__main__":
     main()
-
