@@ -13,7 +13,7 @@ nlp = spacy.load('en_core_web_sm')
 
 def extracted_text_from_pdf(pdf_file):
     text = ""
-    with fitz.open(pdf_file) as doc:
+    with fitz.open(working_file) as doc:
         for page in doc:
             text += page.get_text()
     if len(text) == 0:
