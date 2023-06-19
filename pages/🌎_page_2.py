@@ -21,9 +21,10 @@ def extracted_text_from_pdf(pdf_file):
     
 def preprocess_document(pdf_file):
     # Extract text from the PDF file
-    working_text = extracted_text_from_pdf(pdf_file)
+    text = extracted_text_from_pdf(pdf_file)
+    
     # Tokenize the document
-    doc = nlp(working_text)
+    doc = nlp(text)
     
     # Remove stop words, punctuation, and lemmatize the tokens
     processed_tokens = []
