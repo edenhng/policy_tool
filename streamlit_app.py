@@ -25,7 +25,7 @@ def preprocess_text(text, nlp):
             lemma = token.lemma_.lower().strip()
             processed_tokens.append(lemma)
     processed_text = " ".join(processed_tokens) 
-    return processed_text, processed_tokens
+    return processed_tokens
 
 def extracted_text_from_pdf(pdf_file):
     text = ""
@@ -104,7 +104,7 @@ def main() :
         #Once the file is uploaded, convert into text and create a word cloud                  
         extracted_text = extracted_text_from_pdf(doc)
         nlp=load_spacy_model()
-        processed_text = preprocess_text(extracted_text, nlp)
+        processed_tokens = preprocess_text(extracted_text, nlp)
         if 'processed_tokens' not in st.session_state:
             st.session_state.processed_tokens = processed_tokens
         create_word_cloud_and_bar_chart(processed_text)     
