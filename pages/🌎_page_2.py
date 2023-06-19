@@ -21,7 +21,8 @@ def extracted_text_from_pdf(pdf_file):
     else:
         st.write("Text is visible")
     return text
-    
+
+'''
 def preprocess_document(pdf_file):
     # Extract text from the PDF file
     text = extracted_text_from_pdf(pdf_file)
@@ -65,6 +66,7 @@ def run_lda(pdf_file):
 
     # Print the coherence score
     st.write("Coherence Score: ", coherence_score)
+'''
 
 # Streamlit app
 def main():
@@ -73,7 +75,8 @@ def main():
     if 'working_file' in st.session_state:
         working_file = st.session_state['working_file']
         st.write("Found a working File from Main Page")
-        run_lda(working_file)
+        #run_lda(working_file)
+        extracted_text_from_pdf(pdf_file)
     else:
         st.info("No working file found from Page 1.")
     
