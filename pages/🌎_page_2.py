@@ -1,4 +1,5 @@
 import streamlit as st
+from streamlit import components
 import spacy
 import fitz #import PyMUPDF
 from spacy.lang.en.stop_words import STOP_WORDS
@@ -31,8 +32,7 @@ def run_lda(tokens):
     # Visualize the topics
     vis_data = gensimvis.prepare(lda_model, corpus, dictionary)
     html_string = pyLDAvis.prepread_data_to_html(vis_data)
-    from streamlit import components
-    components.v1.html(html_string, width=1300, height=800)
+    components.v1.html(html_string, width=1300, height=800, scrolling=True)
 
     # Print the coherence score
     st.write("Coherence Score: ", coherence_score)
