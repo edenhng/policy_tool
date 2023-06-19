@@ -32,7 +32,7 @@ def run_lda(tokens):
     # Visualize the topics
     vis_data = gensimvis.prepare(lda_model, corpus, dictionary)
     html_string = pyLDAvis.prepared_data_to_html(vis_data)
-    components.v1.html(html_string, width=1300, height=800, scrolling=True)
+    components.v1.html(html_string, width=800, height=500, scrolling=True)
 
     # Print the coherence score
     st.write("Coherence Score: ", coherence_score)
