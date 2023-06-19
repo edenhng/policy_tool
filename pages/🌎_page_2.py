@@ -12,43 +12,8 @@ import pyLDAvis.gensim_models as gensimvis
 nlp = spacy.load('en_core_web_sm')
 
 
-
-'''
-def extracted_text_from_pdf(upload_file):
-    text = ""
-    with fitz.open(upload_file) as doc:
-        for page in upload_file:
-            text += page.get_text()
-    if len(text) == 0:
-        st.write("Text is empty")
-    else:
-        st.write("Text is visible")
-    return text
-'''
-'''
-def preprocess_document(pdf_file):
-    # Extract text from the PDF file
-    text = extracted_text_from_pdf(pdf_file)
-    
-    # Tokenize the document
-    doc = nlp(text)
-    
-    # Remove stop words, punctuation, and lemmatize the tokens
-    processed_tokens = []
-    for token in doc:
-        if token.is_stop or token.is_punct or token.is_space:
-            continue
-        lemma = token.lemma_.lower().strip()
-        processed_tokens.append(lemma)
-    return processed_tokens
-
-def run_lda(pdf_file):
+def run_lda(tokens):
     # Preprocess the document
-    tokens = preprocess_document(pdf_file)
-    if not tokens:
-        st.warning("No tokens found in the document.")
-        return
-        
     # Create a dictionary from the tokens
     dictionary = corpora.Dictionary([tokens])
  
@@ -69,18 +34,17 @@ def run_lda(pdf_file):
 
     # Print the coherence score
     st.write("Coherence Score: ", coherence_score)
-'''
+
 
 # Streamlit app
 def main():
     st.title("LDA Topic Modeling")
     #Retrieve the stored PDF file from the session state
-    if 'processed_text' in st.session_state:
-        processed_text = st.session_state.processed_text
+    if 'processed_tokens' in st.session_state:
+        processed_tokens = st.session_state.processed_tokens
         st.write("Found a working File from Main Page")
-        st.write(processed_text)
+        st.write(processed_tokens)
         #run_lda(working_file)
-        #extracted_text_from_pdf(working_file)
     else:
         st.info("No working file found from Page 1.")
     
