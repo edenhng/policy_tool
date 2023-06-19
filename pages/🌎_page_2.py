@@ -76,5 +76,3 @@ def main():
         
 if __name__ == "__main__":
     main()
-if 'working_file' in st.session_state:
-    working_file = st.session_state['working_file']
