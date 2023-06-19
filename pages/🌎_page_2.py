@@ -76,7 +76,7 @@ def main():
     st.title("LDA Topic Modeling")
     #Retrieve the stored PDF file from the session state
     if 'processed_text' in st.session_state:
-        processed_text = st.session_state['working_file']
+        processed_text = st.session_state.processed_text
         st.write("Found a working File from Main Page")
         st.write(processed_text)
         #run_lda(working_file)
