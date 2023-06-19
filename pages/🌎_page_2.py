@@ -48,7 +48,8 @@ def run_lda(pdf_file):
     if corpus is None:
         st.warning("No tokens found in the document.")
     else:
-        st.write("It is working")       
+        st.write("It is working")      
+    st.write([[(tokens[id], freq) for id, freq in cp] for cp in corpus[:1]])
     # Create the LDA model
     lda_model = gensim.models.ldamodel.LdaModel(corpus=corpus, id2word=dictionary, num_topics=10, random_state=100, 
                                                 update_every=1, chunksize=100, passes=10, alpha='auto', per_word_topics=True)
