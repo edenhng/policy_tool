@@ -13,7 +13,7 @@ nlp = spacy.load('en_core_web_sm')
 
 def extracted_text_from_pdf(pdf_file):
     text = ""
-    for page in doc:
+    for page in pdf_file:
         text += page.get_text()
     if len(text) == 0:
         st.write("Text is empty")
