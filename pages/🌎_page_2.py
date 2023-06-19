@@ -16,12 +16,12 @@ def extracted_text_from_pdf(pdf_file):
     with fitz.open(pdf_file) as doc:
         for page in doc:
             text += page.get_text()
+    st.write(text)
     return text
     
 def preprocess_document(pdf_file):
     # Extract text from the PDF file
     text = extracted_text_from_pdf(pdf_file)
-    st.write(text)  
     # Tokenize the document
     doc = nlp(text)
     
