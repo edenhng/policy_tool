@@ -76,7 +76,7 @@ def main():
         working_file = st.session_state['working_file']
         st.write("Found a working File from Main Page")
         #run_lda(working_file)
-        extracted_text_from_pdf(pdf_file)
+        extracted_text_from_pdf(working_file)
     else:
         st.info("No working file found from Page 1.")
     
