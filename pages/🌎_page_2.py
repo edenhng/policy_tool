@@ -21,7 +21,7 @@ def extracted_text_from_pdf(pdf_file):
 def preprocess_document(pdf_file):
     # Extract text from the PDF file
     text = extracted_text_from_pdf(pdf_file)
-  
+    st.write(text)  
     # Tokenize the document
     doc = nlp(text)
     
