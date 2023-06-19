@@ -24,6 +24,7 @@ def preprocess_document(pdf_file):
         working_file = st.session_state['working_file']
         # Extract text from the PDF file
         text = extracted_text_from_pdf(working_file)
+    st.write(text)
   
     # Tokenize the document
     doc = nlp(text)
@@ -34,7 +35,6 @@ def preprocess_document(pdf_file):
             continue
         lemma = token.lemma_.lower().strip()
         processed_tokens.append(lemma)
-    st.write(processed_tokens)
     return processed_tokens
 
 def run_lda(pdf_file):
