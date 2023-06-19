@@ -20,11 +20,8 @@ def extracted_text_from_pdf(pdf_file):
     
 def preprocess_document(pdf_file):
     # Error handling &   # Extract text from the PDF file
-    if 'working_file' in st.session_state:
-        working_file = st.session_state['working_file']
-        # Extract text from the PDF file
-        text = extracted_text_from_pdf(working_file)
-    st.write(text, "If there are any text in place?")
+    # Extract text from the PDF file
+    text = extracted_text_from_pdf(working_file)
   
     # Tokenize the document
     doc = nlp(text)
@@ -79,4 +76,5 @@ def main():
         
 if __name__ == "__main__":
     main()
-
+if 'working_file' in st.session_state:
+    working_file = st.session_state['working_file']
