@@ -1,16 +1,17 @@
 import spacy
 import streamlit as st
 from spacy import displacy
+import fitz
 
 def highlight_entities(doc, entity_label):
     html = displacy.render(doc, style="ent", options={"ents": [entity_label]}, page=True)
     st.components.v1.html(html, height=400, scrolling=True)
 
 def extract_text_from_pdf(file):
-    reader = PyPDF2.PdfFileReader(pdf_file)
+    doc = fitz.open(stream=file.read(), filetype="pdf")
     text = ""
-    for page in range(reader.numPages):
-        text += reader.getPage(page).extractText()
+    for page in doc:
+        text += page.get_text()
     return text
         
 def main():
