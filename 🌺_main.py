@@ -92,11 +92,11 @@ def main() :
         page_count = doc.page_count
         title = metadata['title']
         author = metadata['author']
-        if title == "":
+        if title is None:
             st.write("Title: N/A")
         else:
             st.write("Title:", title)
-        if title == "":
+        if title is None:
             st.write("Author: N/A")
         else:
             st.write("Author:", author)           
