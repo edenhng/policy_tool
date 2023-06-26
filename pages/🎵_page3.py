@@ -7,12 +7,11 @@ def highlight_entities(doc, entity_label):
     st.components.v1.html(html, height=400, scrolling=True)
 
 def extract_text_from_pdf(file):
-    with open(file, "rb") as pdf_file:
-        reader = PyPDF2.PdfFileReader(pdf_file)
-        text = ""
-        for page in range(reader.numPages):
-            text += reader.getPage(page).extractText()
-        return text
+    reader = PyPDF2.PdfFileReader(pdf_file)
+    text = ""
+    for page in range(reader.numPages):
+        text += reader.getPage(page).extractText()
+    return text
         
 def main():
     st.title("Named Entity Recognition with spaCy")
