@@ -25,7 +25,7 @@ def main():
         doc = nlp(document)
         entity_label = entity_option.upper()
 
-        if st.buttton("Extract Sentences"):
+        if st.button("Extract Sentences"):
             entity_sentences = [sent for sent in doc.sents if any(ent.label_ == entity_label for ent in sent.ents)]
 
             if entity_sentences:
