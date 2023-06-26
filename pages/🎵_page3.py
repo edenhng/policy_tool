@@ -16,7 +16,7 @@ def extract_text_from_pdf(file):
         
 def main():
     st.title("Named Entity Recognition with spaCy")
-    document = st.text_area("Enter your document text here", height=200)
+    file = st.file_uploader("Upload a PDF file", type="pdf")
     entity_option = st.selectbox("Select entity to highlight", ("MONEY", "PERSON"))
 
     if file is not None:
