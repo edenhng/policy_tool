@@ -1,3 +1,4 @@
+'''
 import spacy
 import streamlit as st
 from spacy import displacy
@@ -39,3 +40,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+'''
