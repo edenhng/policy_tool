@@ -36,7 +36,7 @@ def main():
             st.write(csv_data)
             save_xlxs = st.download_button("Save to Excel spreadsheet", csv_data.to_excel, "extracted_sentences.xlxs", 
                                            "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", key="download-xlsx")
-            if save_csv:
+            if save_xlxs:
                 st.write("Sentences saved to extracted_sentences.csv")
               
     else:
