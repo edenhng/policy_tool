@@ -3,11 +3,13 @@ import fitz
 import pandas as pd
 import spacy
 from spacy import displacy
+from io import BytesIO
 
 
 def highlight_entities(doc, entity_label):
     html = displacy.render(doc, style="ent", options={"ents": [entity_label]}, page=True)
     st.components.v1.html(html, height=400, scrolling=True)
+
 
 def extract_sentences_from_pdf(pdf_data):
     sentences = []
@@ -18,10 +20,11 @@ def extract_sentences_from_pdf(pdf_data):
         for sent in doc.sents:
             sentences.append((page_num, sent.text))
     return sentences
-        
+
+
 def main():
     st.title("Tabulating sentences")
-    #Retrieve the PDF file from the session state
+    # Retrieve the PDF file from the session state
     if 'working_pdf' in st.session_state:
         working_pdf = st.session_state.working_pdf
         st.info("The PDF is here")
@@ -29,21 +32,29 @@ def main():
 
         if len(sentences) > 0:
             st.write("Extracted Sentences:")
-    
-            csv_data = pd.DataFrame(sentences, columns= ["Page Number", "Sentence"])
-            csv_string = csv_data.to_csv(index=False)
+
+            csv_data = pd.DataFrame(sentences, columns=["Page Number", "Sentence"])
             st.write("CSV File:")
             st.write(csv_data)
-            save_excel = st.download_button("Save to Excel", csv_data.to_excel, "extracted_sentences.xlsx", 
-                                             "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", 
+
+            # Save DataFrame to Excel file
+            excel_data = BytesIO()
+            with pd.ExcelWriter(excel_data, engine='xlsxwriter') as writer:
+                csv_data.to_excel(writer, sheet_name='Sheet1', index=False)
+            excel_data.seek(0)
+
+            save_excel = st.download_button("Save to Excel", excel_data, 
+                                             file_name="extracted_sentences.xlsx", 
+                                             mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", 
                                              key="download-excel")
+
             if save_excel:
-                st.write("Sentences saved to extracted_sentences.csv")
-              
+                st.write("Sentences saved to extracted_sentences.xlsx")
+        else:
+            st.warning("The code is wrong to produce the sentences!")
     else:
         st.warning("The PDF is not successfully uploaded. Please try again!")
-    
+
 
 if __name__ == "__main__":
     main()
-
