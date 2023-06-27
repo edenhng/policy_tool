@@ -31,12 +31,10 @@ def main():
             st.write("Extracted Sentences:")
             for page_num, sentence in sentences:
                 st.write(f"Page {page_num}: {sentence}")
-            save_csv = st.button("Save to CSV")
+            save_csv = st.download_button("Save to CSV", csv, "extracted_sentences.csv", "text/csv", key="download-csv")
             if save_csv:
                 df = pd.DataFrame(sentences, columns= ["Page Number", "Sentence"])
-                df.to_csv("extracted_sentences.csv", index = False)
                 st.write("Sentences saved to extracted_sentences.csv")
-
                 st.write("CSV File:")
                 st.write(df)
         else:
