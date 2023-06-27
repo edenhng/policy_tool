@@ -5,12 +5,7 @@ import spacy
 from spacy import displacy
 from io import BytesIO
 
-
-def highlight_entities(doc, entity_label):
-    html = displacy.render(doc, style="ent", options={"ents": [entity_label]}, page=True)
-    st.components.v1.html(html, height=400, scrolling=True)
-
-
+#Get data from the stored pdf file in session state
 def extract_sentences_from_pdf(pdf_data):
     sentences = []
     nlp = spacy.load("en_core_web_sm")
