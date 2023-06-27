@@ -32,7 +32,7 @@ def main():
     
             csv_data = pd.DataFrame(sentences, columns= ["Page Number", "Sentence"])
             csv_string = csv_data.to_csv(index=False)
-            csv_bytes = csv_sring.encode('utf-8')
+            csv_bytes = csv_string.encode('utf-8')
             save_csv = st.download_button("Save to CSV", csv_bytes, "extracted_sentences.csv", "text/csv", key="download-csv")
 
             if save_csv:
