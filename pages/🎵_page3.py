@@ -33,12 +33,12 @@ def main():
             csv_data = pd.DataFrame(sentences, columns= ["Page Number", "Sentence"])
             csv_string = csv_data.to_csv(index=False)
             csv_bytes = csv_string.encode('utf-8')
+            st.write("CSV File:")
+            st.write(csv_data)
             save_csv = st.download_button("Save to CSV", csv_bytes, "extracted_sentences.csv", "text/csv", key="download-csv")
-
             if save_csv:
                 st.write("Sentences saved to extracted_sentences.csv")
-                st.write("CSV File:")
-                st.write(csv_data)
+              
     else:
         st.warning("The PDF is not successfully uploaded. Please try again!")
     
