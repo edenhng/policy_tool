@@ -9,8 +9,8 @@ def highlight_entities(doc, entity_label):
     html = displacy.render(doc, style="ent", options={"ents": [entity_label]}, page=True)
     st.components.v1.html(html, height=400, scrolling=True)
 
-def extract_sentences_from_pdf(file):
-    doc = fitz.open(file)
+def extract_sentences_from_pdf(pdf_data):
+    doc = fitz.open("pdf", pdf_data = pdf_data)
     sentences = []
     nlp = spacy.load("en_core_web_sm")
     for page_num, page in enumerate(doc, 1):
