@@ -1,7 +1,9 @@
-import spacy
 import streamlit as st
-from spacy import displacy
 import fitz
+import pandas as pd
+import spacy
+from spacy import displacy
+
 
 def highlight_entities(doc, entity_label):
     html = displacy.render(doc, style="ent", options={"ents": [entity_label]}, page=True)
