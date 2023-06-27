@@ -108,7 +108,8 @@ def main() :
         processed_tokens = preprocess_text(extracted_text, nlp)[1]
         if 'processed_tokens' not in st.session_state:
             st.session_state.processed_tokens = processed_tokens
-        working_pdf = st.session_state.pdf_file
+        if 'working_pdf' not in st.session_state:
+            st.session_state.pdf_file = working_pdf
         create_word_cloud_and_bar_chart(processed_text)     
         my_table=get_TOC(doc)
         st.table(my_table) 
