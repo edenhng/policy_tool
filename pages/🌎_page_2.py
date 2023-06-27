@@ -41,7 +41,7 @@ def run_lda(tokens):
 # Streamlit app
 def main():
     st.title("LDA Topic Modeling")
-    #Retrieve the stored PDF file from the session state
+    #Retrieve the stored tokens extracted in PDF file from the session state
     if 'processed_tokens' in st.session_state:
         processed_tokens = st.session_state.processed_tokens
         st.info("Found a working File from Main Page")
