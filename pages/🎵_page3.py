@@ -41,7 +41,7 @@ def main():
                 st.write("CSV File:")
                 st.write(df)
         else:
-            st.warning("The code is wrong to produce the sentences"!)
+            st.warning("The code is wrong to produce the sentences!")
     else:
         st.warning("The PDF is not successfully uploaded. Please try again!")
     
