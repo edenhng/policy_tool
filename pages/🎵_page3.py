@@ -15,7 +15,7 @@ def extract_sentences_from_pdf(pdf_data):
     for page_num, page in enumerate(pdf_data, 1):
         text = page.get_text()
         doc = nlp(text)
-        for sent in doc.sents():
+        for sent in doc.sents:
             sentences.append((page_num, sent.text))
     return sentences
         
