@@ -29,16 +29,16 @@ def main():
 
         if len(sentences) > 0:
             st.write("Extracted Sentences:")
-            for page_num, sentence in sentences:
-                st.write(f"Page {page_num}: {sentence}")
-            save_csv = st.download_button("Save to CSV", csv, "extracted_sentences.csv", "text/csv", key="download-csv")
+    
+            csv_data = pd.DataFrame(sentences, columns= ["Page Number", "Sentence"])
+            csv_string = csv_data.to_csv(index=False)
+            csv_bytes = csv_sring.encode('utf-8')
+            save_csv = st.download_button("Save to CSV", csv_bytes, "extracted_sentences.csv", "text/csv", key="download-csv")
+
             if save_csv:
-                df = pd.DataFrame(sentences, columns= ["Page Number", "Sentence"])
                 st.write("Sentences saved to extracted_sentences.csv")
                 st.write("CSV File:")
-                st.write(df)
-        else:
-            st.warning("The code is wrong to produce the sentences!")
+                st.write(csv_data)
     else:
         st.warning("The PDF is not successfully uploaded. Please try again!")
     
