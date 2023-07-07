@@ -4,9 +4,12 @@ import fitz  # PyMuPDF
 from transformers import pipeline
 from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
 
-@st.cache_data
 @st.cache_resource
-    
+def load_model():
+    tokenizer = AutoTokenizer.from_pretrained('facebook/bart-large-cnn')
+    summarizer = AutoModelForSeq2SeqLM.from_pretrained('facebook/bart-large-cnn')
+    return tokenizer, summarizer
+
 def extract_text_from_pdf(file):
     doc = fitz.open(stream=file.read(), filetype="pdf")
     text = ""
@@ -65,12 +68,9 @@ pdf_file = st.file_uploader("Upload a PDF file", type=["pdf"])
 if st.button("Summarize"):
     if pdf_file is not None:
         input_document = extract_text_from_pdf(pdf_file)
-        tokenizer = AutoTokenizer.from_pretrained('facebook/bart-large-cnn')
-        summarizer = AutoModelForSeq2SeqLM.from_pretrained('facebook/bart-large-cnn')
+        tokenizer, summarizer = load_model()
         sentences = split_sentences(input_document)
         chunks = create_chunks(sentences, chunk_size=1024)
-
-   
         
         combined_summary = ''
         for chunk in chunks:
