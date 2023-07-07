@@ -75,9 +75,8 @@ def get_TOC(doc):
 def main() :
     session_state = SessionState(pdf_file=None)
     #Create a side bar and format it
-    with st.sidebar:
-        st.title("Policy at a Glance")  
-    add_logo("https://i.imgur.com/1kIeVY6.png")
+    with st.sidebar: 
+        add_logo("https://i.imgur.com/1kIeVY6.png")
     
     st.header('A tool to mine and comprehend the policy')
     
