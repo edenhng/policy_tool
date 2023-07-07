@@ -74,9 +74,10 @@ if st.button("Summarize"):
         sentences = split_sentences(input_document)
         chunks = create_chunks(sentences, chunk_size=1024)
 
-        progress_text = "Summarizing in progress..."
+        progress_text = "Summarising in progress..."
         progress_bar = st.progress(0, text=progress_text)
 
+        combined_summary = ''  # Initialize combined_summary
         for i, chunk in enumerate(chunks):
             combined_text = ' '.join(chunk)
             summary = generate_summary(combined_text, maximum_tokens=150, minimum_tokens=40)
