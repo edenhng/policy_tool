@@ -4,8 +4,8 @@ import fitz  # PyMuPDF
 from transformers import pipeline
 from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
 
-@st.cache(allow_output_mutation=True)
-
+@st.cache_data
+@st.cache_resource
     
 def extract_text_from_pdf(file):
     doc = fitz.open(stream=file.read(), filetype="pdf")
