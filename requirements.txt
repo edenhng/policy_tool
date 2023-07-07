@@ -1,7 +1,6 @@
 #Core
 streamlit>=1.18.0
 streamlit-extras
-torch
 
 #PDF Processor
 PyMuPDF==1.22.3
