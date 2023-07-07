@@ -5,10 +5,7 @@ from transformers import pipeline
 from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
 
 @st.cache(allow_output_mutation=True)
-def load_model():
-    tokenizer = AutoTokenizer.from_pretrained('facebook/bart-large-cnn')
-    summarizer = AutoModelForSeq2SeqLM.from_pretrained('facebook/bart-large-cnn')
-    return tokenizer, summarizer
+
     
 def extract_text_from_pdf(file):
     doc = fitz.open(stream=file.read(), filetype="pdf")
@@ -68,10 +65,12 @@ pdf_file = st.file_uploader("Upload a PDF file", type=["pdf"])
 if st.button("Summarize"):
     if pdf_file is not None:
         input_document = extract_text_from_pdf(pdf_file)
-        tokenizer, summarizer = load_model()
         sentences = split_sentences(input_document)
         chunks = create_chunks(sentences, chunk_size=1024)
 
+        tokenizer = AutoTokenizer.from_pretrained('facebook/bart-large-cnn')
+        summarizer = AutoModelForSeq2SeqLM.from_pretrained('facebook/bart-large-cnn')
+        
         combined_summary = ''
         for chunk in chunks:
             combined_text = ' '.join(chunk)
