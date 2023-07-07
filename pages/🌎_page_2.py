@@ -1,5 +1,6 @@
 import streamlit as st
 from streamlit import components
+from streamlit_extras.app_logo import add_logo
 import spacy
 import fitz #import PyMUPDF
 from spacy.lang.en.stop_words import STOP_WORDS
@@ -41,6 +42,7 @@ def run_lda(tokens):
 # Streamlit app
 def main():
     st.title("LDA Topic Modeling")
+    add_logo("https://i.imgur.com/1kIeVY6.png")
     #Retrieve the stored tokens extracted in PDF file from the session state
     if 'processed_tokens' in st.session_state:
         processed_tokens = st.session_state.processed_tokens
