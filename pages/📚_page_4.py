@@ -4,6 +4,7 @@ from streamlit_extras.app_logo import add_logo
 import fitz  # PyMuPDF
 from transformers import pipeline
 from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
+import time
 
 @st.cache_resource
 def load_model():
@@ -72,18 +73,24 @@ if st.button("Summarize"):
         tokenizer, summarizer = load_model()
         sentences = split_sentences(input_document)
         chunks = create_chunks(sentences, chunk_size=1024)
-        
-        combined_summary = ''
-        for chunk in chunks:
+
+        progress_text = "Summarizing in progress..."
+        progress_bar = st.progress(0, text=progress_text)
+
+        for i, chunk in enumerate(chunks):
             combined_text = ' '.join(chunk)
             summary = generate_summary(combined_text, maximum_tokens=150, minimum_tokens=40)
             combined_summary += summary + ' '
+
+            progress = (i + 1) / len(chunks) * 100
+            progress_bar.progress(progress, text=progress_text)
 
         final_summary = generate_summary(combined_summary, maximum_tokens=350, minimum_tokens=200)
         final_summary_sentences = re.split(r'(?<=[^A-Z].[.?]) +(?=[A-Z])', final_summary.replace("\n", ' '))
         bullet_points = ["• " + sentence for sentence in final_summary_sentences]
         output = "\n".join(bullet_points)
 
+        progress_bar.empty()  # Remove progress bar
         st.subheader("Final Summary:")
         st.write(output)
     else:
