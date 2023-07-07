@@ -1,4 +1,5 @@
 import streamlit as st
+from streamlit_extras.app_logo import add_logo
 import fitz
 import pandas as pd
 import spacy
@@ -19,6 +20,7 @@ def extract_sentences_from_pdf(pdf_data):
 
 def main():
     st.title("Tabulating sentences")
+    add_logo("https://i.imgur.com/1kIeVY6.png")
     # Retrieve the PDF file from the session state
     if 'working_pdf' in st.session_state:
         working_pdf = st.session_state.working_pdf
