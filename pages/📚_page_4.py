@@ -63,8 +63,7 @@ def generate_summary(sequence, maximum_tokens, minimum_tokens):
 
 # Initialize Streamlit app
 add_logo("https://i.imgur.com/1kIeVY6.png")
-st.title("Text Summarization with BART")
-st.subheader("Upload your PDF document")
+st.title("Policy Text Summariser")
 pdf_file = st.file_uploader("Upload a PDF file", type=["pdf"])
 
 if st.button("Summarize"):
