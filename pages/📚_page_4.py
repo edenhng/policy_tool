@@ -83,7 +83,7 @@ if st.button("Summarize"):
             summary = generate_summary(combined_text, maximum_tokens=150, minimum_tokens=40)
             combined_summary += summary + ' '
 
-            progress = (i + 1) / len(chunks) * 100
+            progress = (i + 1) / len(chunks) 
             progress_bar.progress(progress, text=progress_text)
 
         final_summary = generate_summary(combined_summary, maximum_tokens=350, minimum_tokens=200)
