@@ -75,12 +75,12 @@ if st.button("Summarize"):
             summary = generate_summary(combined_text, maximum_tokens=150, minimum_tokens=40)
             combined_summary += summary + ' '
 
-        final_summary = generate_summary(combined_summary, maximum_tokens=150, minimum_tokens=40)
-
-        st.subheader("Combined Summary:")
-        st.write(combined_summary)
+        final_summary = generate_summary(combined_summary, maximum_tokens=500, minimum_tokens=300)
+        final_summary_sentences = re.split(r'(?<=[^A-Z].[.?]) +(?=[A-Z])', final_summary.replace("\n", ' '))
+        bullet_points = ["• " + sentence for sentence in final_summary_sentences]
+        output = "\n".join(bullet_points)
 
         st.subheader("Final Summary:")
-        st.write(final_summary)
+        st.write(output)
     else:
         st.warning("Please upload a PDF file.")
