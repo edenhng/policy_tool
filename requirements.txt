@@ -1,9 +1,7 @@
 #Core
 streamlit>=1.18.0
 streamlit-extras
-jax 
-jaxlib
-flax
+torch
 
 #PDF Processor
 PyMuPDF==1.22.3
