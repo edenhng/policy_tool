@@ -1,5 +1,6 @@
 import re
 import streamlit as st
+from streamlit_extras.app_logo import add_logo
 import fitz  # PyMuPDF
 from transformers import pipeline
 from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
@@ -61,6 +62,7 @@ def generate_summary(sequence, maximum_tokens, minimum_tokens):
     return summary
 
 # Initialize Streamlit app
+add_logo("https://i.imgur.com/1kIeVY6.png")
 st.title("Text Summarization with BART")
 st.subheader("Upload your PDF document")
 pdf_file = st.file_uploader("Upload a PDF file", type=["pdf"])
