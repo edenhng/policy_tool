@@ -6,8 +6,8 @@ from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
 
 @st.cache_resource
 def load_model():
-    tokenizer = AutoTokenizer.from_pretrained('facebook/bart-large-cnn')
-    summarizer = AutoModelForSeq2SeqLM.from_pretrained('facebook/bart-large-cnn')
+    tokenizer = AutoTokenizer.from_pretrained('pszemraj/long-t5-tglobal-base-16384-book-summary')
+    summarizer = AutoModelForSeq2SeqLM.from_pretrained('pszemraj/long-t5-tglobal-base-16384-book-summary')
     return tokenizer, summarizer
 
 def extract_text_from_pdf(file):
