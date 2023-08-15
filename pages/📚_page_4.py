@@ -64,7 +64,7 @@ def generate_summary(sequence, maximum_tokens, minimum_tokens, temperature=2):
     return summary
 
 # Initialize Streamlit app
-add_logo("https://i.imgur.com/1kIeVY6.png")
+add_logo("https://i.imgur.com/amZoFFM.jpg")
 st.title("Policy Text Summariser")
 pdf_file = st.file_uploader("Upload a PDF file", type=["pdf"])
 
