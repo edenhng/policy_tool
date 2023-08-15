@@ -42,7 +42,7 @@ def run_lda(tokens):
 # Streamlit app
 def main():
     st.title("LDA Topic Modeling")
-    add_logo("https://i.imgur.com/epfgLsN.png")
+    add_logo("https://i.imgur.com/ZDHLUG9.jpeg")
     #Retrieve the stored tokens extracted in PDF file from the session state
     if 'processed_tokens' in st.session_state:
         processed_tokens = st.session_state.processed_tokens
