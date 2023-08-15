@@ -46,11 +46,11 @@ def create_chunks(sentences, chunk_size):
 
     return chunks
 
-def generate_summary(sequence, maximum_tokens, minimum_tokens):
+def generate_summary(sequence, maximum_tokens, minimum_tokens, temperature=3):
     input_ids = tokenizer.encode(sequence, truncation=True, max_length=1024, return_tensors="pt")
     output = summarizer.generate(
         input_ids,
-        num_beams=4,
+        num_beams=2,
         length_penalty=2.0,
         max_length=maximum_tokens,
         min_length=minimum_tokens,
