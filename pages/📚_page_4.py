@@ -94,5 +94,11 @@ if st.button("Summarize"):
         progress_bar.empty()  # Remove progress bar
         st.subheader("Final Summary:")
         st.write(output)
+
+         # Copy to clipboard
+        if st.button("Copy to Clipboard"):
+            st.write("Copied to clipboard!")
+            st.text(output)
+        
     else:
         st.warning("Please upload a PDF file.")
