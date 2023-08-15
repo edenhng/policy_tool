@@ -46,7 +46,7 @@ def create_chunks(sentences, chunk_size):
 
     return chunks
 
-def generate_summary(sequence, maximum_tokens, minimum_tokens):
+def generate_summary(sequence, maximum_tokens, minimum_tokens, temperature=5.0):
     input_ids = tokenizer.encode(sequence, truncation=True, max_length=1024, return_tensors="pt")
     output = summarizer.generate(
         input_ids,
@@ -57,6 +57,7 @@ def generate_summary(sequence, maximum_tokens, minimum_tokens):
         no_repeat_ngram_size=3,
         early_stopping=True,
         do_sample=False,
+        temperature=temperature,
         num_return_sequences=1
     )
     summary = tokenizer.decode(output[0], skip_special_tokens=True)
