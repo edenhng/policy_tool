@@ -46,7 +46,7 @@ def create_chunks(sentences, chunk_size):
 
     return chunks
 
-def generate_summary(sequence, maximum_tokens, minimum_tokens, temperature=1):
+def generate_summary(sequence, maximum_tokens, minimum_tokens, temperature=2):
     input_ids = tokenizer.encode(sequence, truncation=True, max_length=1024, return_tensors="pt")
     output = summarizer.generate(
         input_ids,
@@ -87,7 +87,7 @@ if st.button("Summarize"):
             progress = (i + 1) / len(chunks) 
             progress_bar.progress(progress, text=progress_text)
 
-        final_summary = generate_summary(combined_summary, maximum_tokens=350, minimum_tokens=200)
+        final_summary = generate_summary(combined_summary, maximum_tokens=180, minimum_tokens=80)
         final_summary_sentences = re.split(r'(?<=[^A-Z].[.?]) +(?=[A-Z])', final_summary.replace("\n", ' '))
         bullet_points = ["• " + sentence for sentence in final_summary_sentences]
         output = "\n".join(bullet_points)
