@@ -138,16 +138,14 @@ def main() :
         }
         df = pd.DataFrame(table_data)
         st.table(df)
-
-        # Download button for Excel file
-        if st.button("", key="download_button"):
-            # Save the Excel file to a BytesIO buffer
-            excel_buffer = io.BytesIO()
-            df.to_excel(excel_buffer, index=False)
-            excel_buffer.seek(0)  # Move the buffer cursor to the beginning
+        
+        # Save the Excel file to a BytesIO buffer
+        excel_buffer = io.BytesIO()
+        df.to_excel(excel_buffer, index=False)
+        excel_buffer.seek(0)  # Move the buffer cursor to the beginning
 
         # Create the download button using the saved Excel file
-            st.download_button(label="Download Excel File", data=excel_buffer, file_name="policy_overview.xlsx", mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
+        st.download_button(label="Download Excel File", data=excel_buffer, file_name="policy_overview.xlsx", mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
 
 
         
