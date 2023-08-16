@@ -123,6 +123,8 @@ def main() :
 
         # Calculate top organization entities
         top_org_entities = get_top_org_entities(processed_text, nlp)
+        # Format the top organization entities as a numbered list
+        formatted_entities = "\n".join([f"{i+1}. {entity}" for i, entity in enumerate(top_org_entities)])
 
         # Display the new table with the specified columns
         table_data = {
@@ -134,7 +136,7 @@ def main() :
             "Scope": [""],
             "Key words": [", ".join(top_keywords)],  # Join top_keywords into a single string
             "Summary": [""],
-            "Top Mentioned Entities": [", ".join(top_org_entities)]  # Join top_org_entities into a single string
+            "Top Mentioned Entities": [formatted_entities]  # Join top_org_entities into a single string
         }
         df = pd.DataFrame(table_data)
         st.table(df)
