@@ -30,8 +30,15 @@ def preprocess_text(text, nlp):
 def get_top_org_entities(text, nlp):
     doc = nlp(text)
     org_entities = [ent.text for ent in doc.ents if ent.label_ == "ORG"]
-    org_frequencies = get_word_frequencies(" ".join(org_entities))
-    sorted_org_frequencies = sorted(org_frequencies.items(), key=lambda x: x[1], reverse=True)
+    org_frequency_counts = {}
+    
+    for entity in org_entities:
+        if entity in org_frequency_counts:
+            org_frequency_counts[entity] += 1
+        else:
+            org_frequency_counts[entity] = 1
+    
+    sorted_org_frequencies = sorted(org_frequency_counts.items(), key=lambda x: x[1], reverse=True)
     top_org_entities = [entity for entity, frequency in sorted_org_frequencies[:5]]
     return top_org_entities
 
