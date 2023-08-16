@@ -58,19 +58,7 @@ def get_word_frequencies(processed_text):
     word_counts = {}
     for word in word_list:
         word_counts[word] = word_counts.get(word, 0) + 1
-    return word_counts
-
-def get_TOC(doc):
-    toc = doc.get_toc()
-    sorted_toc=sorted(toc, key=lambda x: x[2])
-    #Filter the list to include only items with "key" is 1
-    filtered_data = [item for item in sorted_toc if item[0] ==1]
-    #Create a DataFrame from the filtered data
-    df = pd.DataFrame(filtered_data, columns=['Key', 'Title', 'Page Number'])
-    #Sort the Data Frame by Page Numer in ascending order
-    df_sorted=df.sort_values(['Page Number'], ascending=[True])
-    return df_sorted[['Title', 'Page Number']].reset_index(drop=True)
-           
+    return word_counts   
 
 def main() :
     session_state = SessionState(pdf_file=None)
@@ -110,9 +98,22 @@ def main() :
         if 'working_pdf' not in st.session_state:
             st.session_state.working_pdf = working_pdf
         create_word_cloud_and_bar_chart(processed_text)     
-        my_table=get_TOC(doc)
-        st.table(my_table) 
-       
+        
+        # Display the new table with the specified columns
+        table_data = {
+            "Author": [author],
+            "Year": [metadata.get('creationDate', 'N/A')],
+            "Title": [title],
+            "Page count": [page_count],
+            "Region": ["N/A"],
+            "Scope": ["N/A"],
+            "Key words": ["N/A"],
+            "Summary": ["N/A"],
+            "Top Mentioned Entities": ["N/A"]
+        }
+        df = pd.DataFrame(table_data)
+        st.table(df)
+
         
 if __name__ == "__main__":
     st.set_page_config(page_title="Testing Policy Tool", layout="wide")
