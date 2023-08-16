@@ -98,6 +98,9 @@ def main() :
         if 'working_pdf' not in st.session_state:
             st.session_state.working_pdf = working_pdf
         create_word_cloud_and_bar_chart(processed_text)     
+        word_frequencies = get_word_frequencies(processed_text)
+        sorted_word_frequencies = sorted(word_frequencies.items(), key=lambda x: x[1], reverse=True)
+        top_keywords = [word for word, frequency in sorted_word_frequencies[:5]]
         
         # Display the new table with the specified columns
         table_data = {
@@ -107,7 +110,7 @@ def main() :
             "Page count": [page_count],
             "Region": ["N/A"],
             "Scope": ["N/A"],
-            "Key words": ["N/A"],
+            "Key words": [", ".join(top_keywords)],  # Join top_keywords into a single string
             "Summary": ["N/A"],
             "Top Mentioned Entities": ["N/A"]
         }
