@@ -8,8 +8,8 @@ import time
 
 @st.cache_resource
 def load_model():
-    tokenizer = AutoTokenizer.from_pretrained('pszemraj/long-t5-tglobal-base-16384-book-summary')
-    summarizer = AutoModelForSeq2SeqLM.from_pretrained('pszemraj/long-t5-tglobal-base-16384-book-summary')
+    tokenizer = AutoTokenizer.from_pretrained('valhalla/distilbart-mnli-12-1')
+    summarizer = AutoModelForSeq2SeqLM.from_pretrained('valhalla/distilbart-mnli-12-1')
     return tokenizer, summarizer
 
 def extract_text_from_pdf(file):
