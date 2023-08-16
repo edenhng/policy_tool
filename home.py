@@ -27,6 +27,14 @@ def preprocess_text(text, nlp):
     processed_text = " ".join(processed_tokens) 
     return processed_text, processed_tokens
 
+def get_top_org_entities(text, nlp):
+    doc = nlp(text)
+    org_entities = [ent.text for ent in doc.ents if ent.label_ == "ORG"]
+    org_frequencies = get_word_frequencies(" ".join(org_entities))
+    sorted_org_frequencies = sorted(org_frequencies.items(), key=lambda x: x[1], reverse=True)
+    top_org_entities = [entity for entity, frequency in sorted_org_frequencies[:5]]
+    return top_org_entities
+
 def extracted_text_from_pdf(pdf_file):
     text = ""
     for page in pdf_file:
@@ -101,7 +109,10 @@ def main() :
         word_frequencies = get_word_frequencies(processed_text)
         sorted_word_frequencies = sorted(word_frequencies.items(), key=lambda x: x[1], reverse=True)
         top_keywords = [word for word, frequency in sorted_word_frequencies[:5]]
-        
+
+        # Calculate top organization entities
+        top_org_entities = get_top_org_entities(processed_text, nlp)
+
         # Display the new table with the specified columns
         table_data = {
             "Author": [author],
@@ -112,7 +123,7 @@ def main() :
             "Scope": ["N/A"],
             "Key words": [", ".join(top_keywords)],  # Join top_keywords into a single string
             "Summary": ["N/A"],
-            "Top Mentioned Entities": ["N/A"]
+            "Top Mentioned Entities": [", ".join(top_org_entities)]  # Join top_org_entities into a single string
         }
         df = pd.DataFrame(table_data)
         st.table(df)
