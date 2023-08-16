@@ -57,7 +57,6 @@ def generate_summary(sequence, maximum_tokens, minimum_tokens):
         no_repeat_ngram_size=3,
         early_stopping=True,
         do_sample=False,
-        temperature=temperature,
         num_return_sequences=1
     )
     summary = tokenizer.decode(output[0], skip_special_tokens=True)
@@ -81,7 +80,7 @@ if st.button("Summarize"):
         combined_summary = ''  # Initialize combined_summary
         for i, chunk in enumerate(chunks):
             combined_text = ' '.join(chunk)
-            summary = generate_summary(combined_text, maximum_tokens=150, minimum_tokens=40)
+            summary = generate_summary(combined_text, maximum_tokens=200, minimum_tokens=40)
             combined_summary += summary + ' '
 
             progress = (i + 1) / len(chunks) 
