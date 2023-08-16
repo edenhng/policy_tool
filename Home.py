@@ -65,7 +65,7 @@ def main() :
     #Create a side bar and format it
     add_logo("https://i.imgur.com/amZoFFM.jpg")
     
-    st.header('Policy Overview Extractor')
+    st.title('Policy Overview Extractor')
     
     #File upload function    
     uploaded_pdf = st.file_uploader("Load pdf: ", type=['pdf'])
