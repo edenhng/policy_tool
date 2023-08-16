@@ -91,6 +91,8 @@ def main() :
         #1. Extract the Title and Author
         metadata = doc.metadata 
         page_count = doc.page_count
+        modDate = metadata['modDate']
+        year = modDate[2:6]
         title = metadata['title']
         author = metadata['author']
         if title is None:
@@ -123,7 +125,7 @@ def main() :
         # Display the new table with the specified columns
         table_data = {
             "Author": [author],
-            "Year": [metadata.get('creationDate', 'N/A')],
+            "Year": [year],
             "Title": [title],
             "Page count": [page_count],
             "Region": ["N/A"],
