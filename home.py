@@ -140,13 +140,16 @@ def main() :
         st.table(df)
 
         # Download button for Excel file
-        if st.button("Download"):
-            # Save the Excel file to a BytesIO buffer
-            excel_buffer = io.BytesIO()
-            df.to_excel(excel_buffer, index=False)
-            excel_buffer.seek(0)  # Move the buffer cursor to the beginning
-            # Create the download button using the saved Excel file
-            st.download_button(label="Download Excel File", data=excel_buffer, file_name="policy_overview.xlsx", mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
+        excel_buffer = io.BytesIO()
+        df.to_excel(excel_buffer, index=False)
+        excel_buffer.seek(0)  # Move the buffer cursor to the beginning
+    
+        # Create the download link for the Excel file
+        download_link = f'<a href="data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64,{base64.b64encode(excel_buffer.getvalue()).decode()}" download="policy_overview.xlsx">Download Excel File</a>'
+
+        # Display the download link using Markdown
+        st.markdown(download_link, unsafe_allow_html=True)
+
         
 if __name__ == "__main__":
     st.set_page_config(page_title="Testing Policy Tool", layout="wide")
