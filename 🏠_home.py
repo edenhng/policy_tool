@@ -99,10 +99,12 @@ def main() :
         author = metadata['author']
         if title is None:
             st.write("Title: N/A")
+            title = "N/A"
         else:
             st.write("Title:", title)
-        if title is None:
+        if author is None:
             st.write("Author: N/A")
+            author = "N/A"
         else:
             st.write("Author:", author)           
         st.write("Total pages:", page_count)
