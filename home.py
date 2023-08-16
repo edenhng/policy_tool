@@ -9,6 +9,7 @@ import seaborn as sns
 import pandas as pd
 from tabulate import tabulate
 import openpyxl
+import io
 
 class SessionState:
     def __init__(self, **kwargs):
@@ -140,8 +141,12 @@ def main() :
 
         # Download button for Excel file
         if st.button("Download"):
-            excel_file = df.to_excel("policy_overview.xlsx", index=False)
-            st.download_button(label="Download Excel File", data=excel_file, file_name="policy_overview", mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
+            # Save the Excel file to a BytesIO buffer
+            excel_buffer = io.BytesIO()
+            df.to_excel(excel_buffer, index=False)
+            excel_buffer.seek(0)  # Move the buffer cursor to the beginning
+            # Create the download button using the saved Excel file
+                st.download_button(label="Download Excel File", data=excel_buffer, file_name="policy_overview.xlsx", mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
         
 if __name__ == "__main__":
     st.set_page_config(page_title="Testing Policy Tool", layout="wide")
