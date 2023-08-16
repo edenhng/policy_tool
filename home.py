@@ -8,6 +8,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import pandas as pd
 from tabulate import tabulate
+import openpyxl
 
 class SessionState:
     def __init__(self, **kwargs):
@@ -137,6 +138,10 @@ def main() :
         df = pd.DataFrame(table_data)
         st.table(df)
 
+        # Download button for Excel file
+        if st.button("Download"):
+            excel_file = df.to_excel("policy_overview.xlsx", index=False)
+            st.download_button(label="Download Excel File", data=excel_file, file_name="policy_overview", mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
         
 if __name__ == "__main__":
     st.set_page_config(page_title="Testing Policy Tool", layout="wide")
