@@ -99,12 +99,10 @@ def main() :
         author = metadata['author']
         if title is None:
             st.write("Title: N/A")
-            title = "N/A"
         else:
             st.write("Title:", title)
         if author is None:
             st.write("Author: N/A")
-            author = "N/A"
         else:
             st.write("Author:", author)           
         st.write("Total pages:", page_count)
@@ -132,10 +130,10 @@ def main() :
             "Year": [year],
             "Title": [title],
             "Page count": [page_count],
-            "Region": ["N/A"],
-            "Scope": ["N/A"],
+            "Region": [""],
+            "Scope": [""],
             "Key words": [", ".join(top_keywords)],  # Join top_keywords into a single string
-            "Summary": ["N/A"],
+            "Summary": [""],
             "Top Mentioned Entities": [", ".join(top_org_entities)]  # Join top_org_entities into a single string
         }
         df = pd.DataFrame(table_data)
