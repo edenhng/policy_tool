@@ -50,14 +50,14 @@ def generate_summary(sequence, maximum_tokens, minimum_tokens):
     input_ids = tokenizer.encode(sequence, truncation=True, max_length=1024, return_tensors="pt")
     output = summarizer.generate(
         input_ids,
-        num_beams=8,
+        num_beams=6,
         length_penalty=2.0,
         max_length=maximum_tokens,
         min_length=minimum_tokens,
         no_repeat_ngram_size=3,
         early_stopping=True,
         do_sample=False,
-        num_return_sequences=1
+        num_return_sequences=2
     )
     summary = tokenizer.decode(output[0], skip_special_tokens=True)
     return summary
