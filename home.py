@@ -146,7 +146,7 @@ def main() :
             df.to_excel(excel_buffer, index=False)
             excel_buffer.seek(0)  # Move the buffer cursor to the beginning
             # Create the download button using the saved Excel file
-                st.download_button(label="Download Excel File", data=excel_buffer, file_name="policy_overview.xlsx", mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
+            st.download_button(label="Download Excel File", data=excel_buffer, file_name="policy_overview.xlsx", mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
         
 if __name__ == "__main__":
     st.set_page_config(page_title="Testing Policy Tool", layout="wide")
