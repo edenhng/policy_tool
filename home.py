@@ -83,7 +83,7 @@ def main() :
     st.title('Policy Overview Extractor')
     
     #File upload function    
-    uploaded_pdf = st.file_uploader("Load pdf: ", type=['pdf'])
+    uploaded_pdf = st.file_uploader("", type=['pdf'])
     if uploaded_pdf is not None:
         session_state.pdf_file = fitz.open(stream=uploaded_pdf.read(), filetype="pdf")
     if session_state.pdf_file is not None:
