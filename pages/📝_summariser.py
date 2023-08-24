@@ -80,13 +80,13 @@ if st.button("Summarize"):
         combined_summary = ''  # Initialize combined_summary
         for i, chunk in enumerate(chunks):
             combined_text = ' '.join(chunk)
-            summary = generate_summary(combined_text, maximum_tokens=300, minimum_tokens=250)
+            summary = generate_summary(combined_text, maximum_tokens=150, minimum_tokens=70)
             combined_summary += summary + ' '
 
             progress = (i + 1) / len(chunks) 
             progress_bar.progress(progress, text=progress_text)
 
-        final_summary = generate_summary(combined_summary, maximum_tokens=800, minimum_tokens=600)
+        final_summary = generate_summary(combined_summary, maximum_tokens=1000, minimum_tokens=850)
         final_summary_sentences = re.split(r'(?<=[^A-Z].[.?]) +(?=[A-Z])', final_summary.replace("\n", ' '))
         bullet_points = ["• " + sentence for sentence in final_summary_sentences]
         output = "\n".join(bullet_points)
