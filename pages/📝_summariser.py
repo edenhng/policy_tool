@@ -80,7 +80,7 @@ if st.button("Summarize"):
         combined_summary = ''  # Initialize combined_summary
         for i, chunk in enumerate(chunks):
             combined_text = ' '.join(chunk)
-            summary = generate_summary(combined_text, maximum_tokens=150, minimum_tokens=70)
+            summary = generate_summary(combined_text, maximum_tokens=100, minimum_tokens=70)
             combined_summary += summary + ' '
 
             progress = (i + 1) / len(chunks) 
